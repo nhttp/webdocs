@@ -5,9 +5,10 @@ const url = new URL("build", import.meta.url).href;
 const app = new NHttp();
 app.use(staticFiles(url, { fetch: true }));
 
-app.on404((rev) => {
-  rev.url = "/404.html";
-  staticFiles(url, { fetch: true })(rev);
+app.on404(async ({ response }) => {
+  const res = await fetch(url + "/404.html");
+  const data = await res.text();
+  response.status(404).type("text/html").send(data);
 });
 
 addEventListener("fetch", app.fetchEventHandler());
