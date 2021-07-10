@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+---
+
+# Usage
+First create file `my_app.ts` and copy in the code from the example above.
+```js
+import { NHttp } from "https://deno.land/x/nhttp@0.7.2/mod.ts";
+
+const app = new NHttp();
+
+app.get("/hello", (rev) => {
+    rev.response.send('Hello');
+});
+
+app.listen(3000, () => {
+    console.log("> Running on port 3000");
+});
+```
+## Running
+Now, run the file `my_app.ts`.
+> Note: Deno native http is unstable. so just add --unstable flag.
+
+```bash
+deno run --allow-net --allow-read --unstable my_app.ts
+```
+
+Example sending json.
+```js
+...
+app.get("/json", ({ response }) => {
+    response.json({ name: 'nhttp' });
+});
+....
+```
+Example using POST method.
+```js
+...
+app.post("/save", ({ response, body }) => {
+    response.json(body);
+});
+...
+```
