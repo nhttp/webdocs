@@ -14,5 +14,5 @@ Thanks To
 For CloudFlare Workers:
 > For doc see => https://developers.cloudflare.com/workers/get-started/guide
 ```bash
-deno bundle --unstable cf_workers.ts cf_workers.js
+deno bundle --unstable deploy.ts cf_workers.js
 ```
