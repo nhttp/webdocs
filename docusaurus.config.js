@@ -66,9 +66,10 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} 
       <a href="https://github.com/nhttp/nhttp" target="_blank">NHttp</a>. 
       Built with <a href="https://docusaurus.io" target="_blank">Docusaurus</a>. 
-      Deploy to <a href="https://deno.com/deploy" target="_blank">Deno Deploy</a>. 
+      Deploy to <a href="https://deno.com/deploy" target="_blank">Deno Deploy</a> 
+      and <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>. 
       Assets by <a href="https://www.flaticon.com/" target="_blank">Flaticon</a>, 
-      <a href="https://github.com/Kirlovon/Deno-Logo" target="_blank">Kirlovon</a>`,
+      <a href="https://github.com/Kirlovon/Deno-Logo" target="_blank">Kirlovon</a>.`,
     },
     prism: {
       theme: lightCodeTheme,

@@ -37,7 +37,7 @@ const FeatureList = [
     Svg: require('../../static/img/deploy.svg').default,
     description: (
       <>
-        NHttp easy deploy to <a href="https://deno.com/deploy" target="_blank">Deno Deploy</a>.
+        NHttp easy deploy to <a href="https://deno.com/deploy" target="_blank">Deno Deploy</a> or <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>.
         <br></br>
         <Link
           to="/docs/usage/deploy">
