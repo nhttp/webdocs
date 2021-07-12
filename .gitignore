@@ -5,6 +5,7 @@
 .docusaurus
 .cache-loader
 
+note.txt
 # Misc
 .DS_Store
 .env.local

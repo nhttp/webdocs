@@ -4,14 +4,14 @@
         <title>NHttp Blog</title>
         <link>https://nhttp.deno.dev/blog</link>
         <description>NHttp Blog</description>
-        <lastBuildDate>Wed, 29 May 2019 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 12 Jul 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[Hello]]></title>
             <link>https://nhttp.deno.dev/blog/hello-world</link>
             <guid>hello-world</guid>
-            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
+            <pubDate>Mon, 12 Jul 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Welcome to this blog.]]></description>
         </item>
     </channel>

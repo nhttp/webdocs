@@ -1,12 +1,12 @@
-import { NHttp } from "https://x.nest.land/nhttp@0.7.3/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.7.3/mod.ts";
 import mime from "https://esm.sh/mime/lite?no-check";
 import { readAll, readerFromStreamReader } from "https://deno.land/std@0.99.0/io/mod.ts";
 
 // deno support. but cf_workers not support
-const fetch_url = new URL("build", import.meta.url).href;
+// const fetch_url = new URL("build", import.meta.url).href;
 
 // alternative for build cf_workers
-// const fetch_url = "https://raw.githubusercontent.com/nhttp/webdocs/master/build";
+const fetch_url = "https://raw.githubusercontent.com/nhttp/webdocs/master/build";
 
 const app = new NHttp();
 

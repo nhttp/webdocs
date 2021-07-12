@@ -5,7 +5,7 @@ sidebar_position: 2
 # Deploy
 First create file `my_app.ts` and copy in the code from the example above.
 ```js
-import { NHttp } from "https://deno.land/x/nhttp@0.7.2/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.7.3/mod.ts";
 
 const app = new NHttp();
 
@@ -24,7 +24,7 @@ deployctl run --no-check --watch my_app.ts
 ## Deploy to cloudflare workers
 First create file `my_app_workers.ts` and copy in the code from the example above.
 ```js
-import { NHttp } from "https://deno.land/x/nhttp@0.7.2/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.7.3/mod.ts";
 
 const app = new NHttp();
 

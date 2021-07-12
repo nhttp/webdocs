@@ -4,10 +4,10 @@ sidebar_position: 2
 
 # Throw Error
 Simple throwing error for situation logic.
-see list Error Class => https://deno.land/x/nhttp@0.7.2/error.ts
+see list Error Class => https://deno.land/x/nhttp@0.7.3/error.ts
 ```js
-import { NHttp  } from "https://deno.land/x/nhttp@0.7.2/mod.ts";
-import { BadRequestError } from "https://deno.land/x/nhttp@0.7.2/error.ts";
+import { NHttp  } from "https://deno.land/x/nhttp@0.7.3/mod.ts";
+import { BadRequestError } from "https://deno.land/x/nhttp@0.7.3/error.ts";
 
 const app = new NHttp();
 
