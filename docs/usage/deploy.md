@@ -32,9 +32,7 @@ app.get("/", ({ response }) => {
     response.send('Hello deploy');
 });
 
-const { handleEvent } = app.fetchEventHandler();
-
-addEventListener("fetch", handleEvent);
+addEventListener("fetch", app.fetchEventHandler());
 ```
 For cloudflare workers, don't forget to bundle:
 ```bash
