@@ -1,9 +1,12 @@
-import { NHttp } from "https://deno.land/x/nhttp@0.7.3/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.7.4/mod.ts";
 import mime from "https://esm.sh/mime/lite?no-check";
 import { readAll, readerFromStreamReader } from "https://deno.land/std@0.99.0/io/mod.ts";
 
+// examples
+// import todoFauna from "./my_apps/with_fauna_db/todos.ts";
+
 // deno support. but cf_workers not support
-const fetch_url = new URL("build", import.meta.url).href;
+export const fetch_url = new URL("build", import.meta.url).href;
 
 // alternative for build cf_workers
 // const fetch_url = "https://raw.githubusercontent.com/nhttp/webdocs/master/build";
@@ -46,6 +49,8 @@ app.use(async ({ request, response, url }, next) => {
     next(error);
   }
 });
+
+// app.use("/examples/todo-fauna", todoFauna);
 
 app.on404(async ({ response }) => {
   const res = await fetch(fetch_url + "/404.html");

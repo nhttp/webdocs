@@ -5,7 +5,7 @@ sidebar_position: 8
 # Upload File
 NHttp built in multipart by default. so NO need any library to handle upload.
 ```js
-import { NHttp, multipart } from "https://deno.land/x/nhttp@0.7.3/mod.ts";
+import { NHttp, multipart } from "https://deno.land/x/nhttp@0.7.4/mod.ts";
 const app = new NHttp();
 
 // handle upload multipart/form-data
@@ -20,9 +20,6 @@ app.listen(3000);
 Cause based on native HTTP, handling multipart is very simple.
 ```js
 ...
-
-// non upload
-multipart.default();
 
 // upload
 multipart.upload({ name: "image" });

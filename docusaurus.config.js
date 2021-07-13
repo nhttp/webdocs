@@ -30,6 +30,16 @@ module.exports = {
           label: 'Documentation',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
+        // {
+        //   label: "Example Apps",
+        //   position: "left",
+        //   items: [
+        //     {
+        //       to: '/todo-fauna/sign', 
+        //       label: 'Todo Fauna DB'
+        //     }
+        //   ]
+        // },
         {
           href: 'https://github.com/nhttp/nhttp',
           label: 'GitHub',
