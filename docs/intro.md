@@ -22,6 +22,7 @@ NHttp a just native HTTP/2 micro framework for [Deno](https://deno.land/). so ho
 * Router support.
 * Includes body parser (jsonBody, urlencodedBody).
 * No third party modules and no std/lib by default.
+* Easy deploy to [Deno Deploy](https://deno.com/deploy) and [Cloudflare Workers](https://workers.cloudflare.com).
 
 ## Benchmark
 `autocannon -c 100 http://localhost:3000/`
