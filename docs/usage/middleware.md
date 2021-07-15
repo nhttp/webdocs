@@ -5,7 +5,7 @@ sidebar_position: 3
 # Middleware
 Middleware is a function to the next handlers.
 ```js
-import { NHttp, Handler } from "https://deno.land/x/nhttp@0.7.4/mod.ts";
+import { NHttp, Handler } from "https://deno.land/x/nhttp@0.7.5/mod.ts";
 
 const app = new NHttp();
 
@@ -28,8 +28,8 @@ Simple wrapper like HOC for middleware (req, res, next);
 > Note: not all middleware can work.
 
 ```js
-import { NHttp, Handler, wrapMiddleware } from "https://deno.land/x/nhttp@0.7.4/mod.ts";
-import { UnprocessableEntityError } from "https://deno.land/x/nhttp@0.7.4/error.ts";
+import { NHttp, Handler, wrapMiddleware } from "https://deno.land/x/nhttp@0.7.5/mod.ts";
+import { UnprocessableEntityError } from "https://deno.land/x/nhttp@0.7.5/error.ts";
 import { body, validationResult } from "https://esm.sh/express-validator";
 
 const app = new NHttp();
