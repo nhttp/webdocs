@@ -41,6 +41,7 @@ app.use(async ({ request, response, url }, next) => {
     headers.set("Content-Type", mime.getType(ext));
     const reader = readerFromStreamReader(res.body.getReader());
     const body = await readAll(reader);
+    headers.set("x-powered-by", "NHttp Deno");
     response.header(headers).send(body);
   } catch (error) {
     next(error);
