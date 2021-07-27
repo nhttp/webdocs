@@ -8,12 +8,12 @@ Simple error handling.
 ...
 // global error handling
 app.onError((error, rev) => {
-    rev.response.status(error.status || 500).send(error.message);
+    rev.response.send(error.message);
 })
 
 // global not found error handling
 app.on404((rev) => {
-    rev.response.status(404).send('Not Found');
+    rev.response.send('Not Found');
 })
 ...
 ```
