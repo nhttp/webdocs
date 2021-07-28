@@ -5,7 +5,7 @@ sidebar_position: 1
 # Usage
 First create file `my_app.ts` and copy in the code from the example above.
 ```js
-import { NHttp } from "https://deno.land/x/nhttp@0.8.1/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.8.2/mod.ts";
 
 const app = new NHttp();
 
@@ -41,7 +41,7 @@ app.post("/save", ({ response, body }) => {
 });
 ...
 ```
-Example directly returning.
+Example return directly.
 ```js
 ...
 app.get("/", () => {
