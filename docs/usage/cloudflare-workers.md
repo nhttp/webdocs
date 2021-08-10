@@ -67,27 +67,4 @@ addEventListener("fetch", app.fetchEventHandler());
 wrangler dev
 ```
 
-### With Durable Object
-
-```js
-import { NHttp } from "nhttp-workers";
-
-const app = new NHttp();
-
-app.get("/hello/:name", ({ params }) => {
-  return "Hello " + params.name;
-});
-
-// class Durable Object
-export class DurableObjectExample {
-  constructor(state, env) {
-    // code
-  }
-
-  async fetch(request) {
-    return app.handleRequest(request);
-  }
-}
-```
-
 More info https://developers.cloudflare.com/workers/
