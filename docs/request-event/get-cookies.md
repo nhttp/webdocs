@@ -10,6 +10,7 @@ app.get("/", (rev) => {
     rev.getCookies();
     // decode if encode true
     rev.getCookies(true);
+    // more code
 });
 ...
 ```

@@ -11,7 +11,7 @@ app.get("/user", ({ response, query }) => {
     console.log(query);
     // => { name: 'john' }
 
-    response.send(query.name);
+    return response.send(query.name);
 });
 ...
 

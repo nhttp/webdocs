@@ -5,12 +5,12 @@ sidebar_position: 1
 # Usage
 First create file `my_app.ts` and copy in the code from the example above.
 ```js
-import { NHttp } from "https://deno.land/x/nhttp@0.8.2/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.8.3/mod.ts";
 
 const app = new NHttp();
 
 app.get("/hello", (rev) => {
-    rev.response.send('Hello');
+    return rev.response.send('Hello');
 });
 
 app.listen(3000, () => {
@@ -29,7 +29,7 @@ Example sending json.
 ```js
 ...
 app.get("/json", ({ response }) => {
-    response.json({ name: 'nhttp' });
+    return response.json({ name: 'nhttp' });
 });
 ....
 ```
@@ -37,7 +37,7 @@ Example using POST method.
 ```js
 ...
 app.post("/save", ({ response, body }) => {
-    response.json(body);
+    return response.json(body);
 });
 ...
 ```

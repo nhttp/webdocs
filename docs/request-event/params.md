@@ -10,7 +10,7 @@ app.get("/user/:name", ({ response, params }) => {
     console.log(params);
     // => { name: 'john' }
 
-    response.send(params.name);
+    return response.send(params.name);
 });
 ...
 

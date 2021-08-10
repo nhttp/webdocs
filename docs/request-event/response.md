@@ -8,7 +8,7 @@ The response http server.
 ...
 // example with status and headers
 app.get("/hello", ({ response }) => {
-    response.status(200).header({ 'name': 'value' }).send('hello');
+    return response.status(200).header({ 'name': 'value' }).send('hello');
 })
 ...
 ```

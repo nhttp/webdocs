@@ -4,10 +4,8 @@ sidebar_position: 2
 
 # Throw Error
 Simple throwing error for situation logic.
-see list Error Class => https://deno.land/x/nhttp@0.8.2/error.ts
 ```js
-import { NHttp  } from "https://deno.land/x/nhttp@0.8.2/mod.ts";
-import { BadRequestError } from "https://deno.land/x/nhttp@0.8.2/error.ts";
+import { NHttp, BadRequestError } from "https://deno.land/x/nhttp@0.8.3/mod.ts";
 
 const app = new NHttp();
 
@@ -16,7 +14,7 @@ app.post("/user", async ({ response }) => {
     if (!data) {
         throw new BadRequestError('Bad request for save');
     }
-    response.send(data);
+    return response.send(data);
 });
 
 app.listen(3000);

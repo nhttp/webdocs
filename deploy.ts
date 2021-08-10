@@ -1,4 +1,4 @@
-import { NHttp } from "https://deno.land/x/nhttp@0.8.2/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.8.3/mod.ts";
 import mime from "https://esm.sh/mime/lite?no-check";
 import { readAll, readerFromStreamReader } from "https://deno.land/std@0.99.0/io/mod.ts";
 
@@ -42,7 +42,7 @@ app.use(async ({ request, response, url }, next) => {
     const reader = readerFromStreamReader(res.body.getReader());
     const body = await readAll(reader);
     headers.set("x-powered-by", "NHttp Deno");
-    response.header(headers).send(body);
+    return response.header(headers).send(body);
   } catch (error) {
     next(error);
   }
@@ -51,7 +51,7 @@ app.use(async ({ request, response, url }, next) => {
 app.on404(async ({ response }) => {
   const res = await fetch(fetch_url + "/404.html");
   const data = await res.text();
-  response.type("text/html").send(data);
+  return response.type("text/html").send(data);
 });
 
 addEventListener("fetch", app.fetchEventHandler());
