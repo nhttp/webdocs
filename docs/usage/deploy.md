@@ -14,6 +14,11 @@ app.get("/", ({ response }) => {
 });
 
 addEventListener("fetch", app.fetchEventHandler());
+
+// or
+// addEventListener("fetch", (event) => {
+//     event.respondWith(app.handleRequest(event.request));
+// });
 ```
 
 ## Running deploy locally

@@ -59,6 +59,11 @@ app.get("/hello2", () => {
 
 // fetch / listen
 addEventListener("fetch", app.fetchEventHandler());
+
+// or
+// addEventListener("fetch", (event) => {
+//     event.respondWith(app.handleRequest(event.request));
+// });
 ```
 
 ### Run Development
