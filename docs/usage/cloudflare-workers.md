@@ -62,7 +62,7 @@ addEventListener("fetch", app.fetchEventHandler());
 
 // or
 // addEventListener("fetch", (event) => {
-//     event.respondWith(app.handleRequest(event.request));
+//     event.respondWith(app.handleEvent(event));
 // });
 ```
 

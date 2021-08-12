@@ -5,7 +5,7 @@ sidebar_position: 2
 # Deploy
 First create file `my_app.ts` and copy in the code from the example above.
 ```js
-import { NHttp } from "https://deno.land/x/nhttp@0.8.4/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@0.8.5/mod.ts";
 
 const app = new NHttp();
 
@@ -17,7 +17,7 @@ addEventListener("fetch", app.fetchEventHandler());
 
 // or
 // addEventListener("fetch", (event) => {
-//     event.respondWith(app.handleRequest(event.request));
+//     event.respondWith(app.handleEvent(event));
 // });
 ```
 
