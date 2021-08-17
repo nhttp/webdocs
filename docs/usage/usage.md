@@ -5,7 +5,7 @@ sidebar_position: 1
 # Usage
 First create file `my_app.ts` and copy in the code from the example above.
 ```js
-import { NHttp } from "https://deno.land/x/nhttp@0.8.5/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@1.0.0/mod.ts";
 
 const app = new NHttp();
 
@@ -19,10 +19,8 @@ app.listen(3000, () => {
 ```
 ## Running
 Now, run the file `my_app.ts`.
-> Note: Deno native http is unstable. so just add --unstable flag.
-
 ```bash
-deno run --allow-net --allow-read --unstable my_app.ts
+deno run --allow-net my_app.ts
 ```
 
 Example sending json.

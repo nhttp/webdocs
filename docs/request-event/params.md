@@ -15,15 +15,15 @@ app.get("/user/:name", ({ response, params }) => {
 ...
 
 // optional params.
-// => { name: 'john' } or { name: null }
+// => { name: 'john' } or { }
 app.get("/user/:name?", ...handlers);
 
 // extension params (Example: only png and jpg).
-// => { filename: 'file.jpg' } or { filename: 'file.png' }
+// => { filename: 'name_of_file' }
 app.get("/image/:filename.(png|jpg)", ...handlers);
 
 // exact params.
 // => { wild: ['param1', 'param2'] }
-app.get("/all/*", ...handlers);
+app.get("/*", ...handlers);
 
 ```

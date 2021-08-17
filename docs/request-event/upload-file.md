@@ -8,7 +8,7 @@ NHttp built in multipart by default. so NO need any library to handle upload.
 > Support only Deno runtime.
 
 ```js
-import { NHttp, multipart } from "https://deno.land/x/nhttp@0.8.5/mod.ts";
+import { NHttp, multipart } from "https://deno.land/x/nhttp@1.0.0/mod.ts";
 const app = new NHttp();
 
 // handle upload multipart/form-data
