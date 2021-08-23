@@ -11,20 +11,23 @@ esbuild mod.ts --bundle --platform=node --outfile=cf_workers/index.js --target=n
 
 ## Usage With Wrangler
 
-### Install deps
+### Install Wrangler
 
 ```bash
 npm install @cloudflare/wrangler -g
-npm install nhttp-workers --save
 ```
 
-### Generate App
+### Generate App and cd app_name
 
 ```bash
 wrangler generate app_name
 cd app_name
 ```
 
+### Install nhttp-workers
+```bash
+npm install nhttp-workers --save
+```
 ### Webpack
 
 Modify wrangler.toml
@@ -57,13 +60,13 @@ app.get("/hello2", () => {
   return "hello";
 });
 
-// fetch / listen
-addEventListener("fetch", app.fetchEventHandler());
+// fetch
+addEventListener("fetch", (event) => {
+    event.respondWith(app.handleEvent(event));
+});
 
-// or
-// addEventListener("fetch", (event) => {
-//     event.respondWith(app.handleEvent(event));
-// });
+// or simply
+// addEventListener("fetch", app.fetchEventHandler());
 ```
 
 ### Run Development
