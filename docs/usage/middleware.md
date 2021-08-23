@@ -28,7 +28,7 @@ Simple wrapper like HOC for middleware (req, res, next);
 > Note: not all middleware can work.
 
 ```js
-import { NHttp, Handler, wrapMiddleware, UnprocessableEntityError } from "https://deno.land/x/nhttp@1.1.0/mod.ts";
+import { NHttp, Handler, wrapMiddleware, HttpError } from "https://deno.land/x/nhttp@1.1.0/mod.ts";
 import { body, validationResult } from "https://esm.sh/express-validator";
 
 const app = new NHttp();
@@ -43,8 +43,7 @@ const validator: Handler[] = [
   (rev, next) => {
     const errors = validationResult(rev);
     if (!errors.isEmpty()) {
-       // status 422
-      throw new UnprocessableEntityError(errors.array());
+      throw new HttpError(422, errors.array());
     }
     return next();
   },
