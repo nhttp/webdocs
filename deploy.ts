@@ -1,4 +1,4 @@
-import { NHttp } from "https://deno.land/x/nhttp@1.1.0/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@1.1.1/mod.ts";
 import mime from "https://esm.sh/mime/lite?no-check";
 import { readAll, readerFromStreamReader } from "https://deno.land/std@0.99.0/io/mod.ts";
 
@@ -54,4 +54,4 @@ app.on404(async ({ response }) => {
   return response.type("text/html").send(data);
 });
 
-addEventListener("fetch", app.fetchEventHandler());
+app.listen(8080);

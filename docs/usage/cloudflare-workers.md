@@ -64,9 +64,6 @@ app.get("/hello2", () => {
 addEventListener("fetch", (event) => {
     event.respondWith(app.handleEvent(event));
 });
-
-// or simply
-// addEventListener("fetch", app.fetchEventHandler());
 ```
 
 ### Run Development
