@@ -5,7 +5,7 @@ sidebar_position: 2
 # Throw Error
 Simple throwing error for situation logic.
 ```js
-import { NHttp, HttpError } from "https://deno.land/x/nhttp@1.1.1/mod.ts";
+import { NHttp, HttpError } from "https://deno.land/x/nhttp@1.1.2/mod.ts";
 
 const app = new NHttp();
 

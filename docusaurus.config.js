@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'NHttp',
-  tagline: 'Fast native http framework for Deno. so hot 🚀',
+  tagline: 'Fast http framework for Deno. so hot 🚀',
   url: 'https://nhttp.deno.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -58,7 +58,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/nhttp/nhttp',
             },
           ],
         },
