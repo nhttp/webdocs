@@ -19,20 +19,21 @@ app.get("/hello", ({ response }) => {
 
 ```js
 ...
+
 // key and value
-res.header("key1", "value1");
+response.header("key1", "value1");
 
 // with object
-res.header({ "key2": "value2" });
+response.header({ "key2": "value2" });
 
 // multiple header
-res.header({
+response.header({
     "key3": "value3",
     "key4": "value4"
 });
 
 // get header
-console.log(res.header());
+console.log(response.header());
 // => Headers {
 //         "key1":"value1",
 //         "key2":"value2",
@@ -41,12 +42,12 @@ console.log(res.header());
 //     }
 
 // get header by key
-console.log(res.header("key1"));
+console.log(response.header("key1"));
 // => value1
 
 // delete key1
-res.header().delete("key1");
-console.log(res.header());
+response.header().delete("key1");
+console.log(response.header());
 // => Headers {
 //         "key2":"value2",
 //         "key3":"value3",
@@ -54,7 +55,7 @@ console.log(res.header());
 //     }
 
 // convert to json object
-console.log(Object.fromEntries(res.header().entries()));
+console.log(Object.fromEntries(response.header().entries()));
 // => {
 //       "key2":"value2",
 //       "key3":"value3",
@@ -62,8 +63,9 @@ console.log(Object.fromEntries(res.header().entries()));
 //    }
 
 // reset header
-res.header({});
-console.log(res.header());
+responseInit.headers = void 0;
+
+console.log(response.header());
 // => Headers { }
 ```
 
