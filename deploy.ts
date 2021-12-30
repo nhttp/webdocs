@@ -22,29 +22,28 @@ app.use(async ({ request, response, url }, next) => {
   try {
     const res = await fetch(fetchFile);
     if (!res.ok || !res.body) return next();
-    const headers = new Headers();
     if (res.headers.get("ETag")) {
-      headers.set("ETag", res.headers.get("ETag") || "");
+      response.header("ETag", res.headers.get("ETag") || "");
     } else if (res.headers.get("last-modified")) {
       const lastMod = res.headers.get("last-modified") || "";
       const key = btoa(lastMod);
-      headers.set("last-modified", lastMod);
-      headers.set("ETag", `W/"${key}"`);
+      response.header("last-modified", lastMod);
+      response.header("ETag", `W/"${key}"`);
     }
-    if (request.headers.get("if-none-match") === headers.get("ETag")) {
+    if (request.headers.get("if-none-match") === response.header("ETag")) {
       return response.status(304).send();
     }
     if (request.headers.get("range")) {
-      headers.set("Accept-Ranges", "bytes");
+      response.header("Accept-Ranges", "bytes");
     }
     const ext = fetchFile.substring(fetchFile.lastIndexOf(".") + 1);
-    headers.set("Content-Type", mime.getType(ext));
+    response.header("Content-Type", mime.getType(ext));
     const reader = readerFromStreamReader(res.body.getReader());
     const body = await readAll(reader);
-    headers.set("x-powered-by", "NHttp Deno");
-    return response.header(headers).send(body);
+    response.header("x-powered-by", "NHttp Deno");
+    return response.send(body);
   } catch (error) {
-    next(error);
+    return next(error);
   }
 });
 

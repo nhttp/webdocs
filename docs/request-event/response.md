@@ -62,7 +62,7 @@ console.log(Object.fromEntries(res.header().entries()));
 //    }
 
 // reset header
-res.header(new Headers());
+res.header({});
 console.log(res.header());
 // => Headers { }
 ```
