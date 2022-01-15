@@ -5,7 +5,7 @@ sidebar_position: 1
 # Usage
 First create file `my_app.ts` and copy in the code from the example above.
 ```js
-import { NHttp } from "https://deno.land/x/nhttp@1.1.5/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@1.1.7/mod.ts";
 
 const app = new NHttp();
 
@@ -19,6 +19,11 @@ app.get("/hello", () => {
 });
 app.get("/hello-json", () => {
     return { name: "nhttp" };
+});
+
+// Regexp
+app.get(/hello/, () => {
+    return "hello";
 });
 
 app.listen(3000, () => {

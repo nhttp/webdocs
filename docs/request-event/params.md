@@ -24,6 +24,6 @@ app.get("/image/:filename.(png|jpg)", ...handlers);
 
 // exact params.
 // => { wild: ['param1', 'param2'] }
-app.get("/*", ...handlers);
+app.get("*", ...handlers);
 
 ```

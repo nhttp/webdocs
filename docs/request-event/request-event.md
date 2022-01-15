@@ -8,15 +8,17 @@ RequestEvent or Deno.RequestEvent (rev) is a some object like :
 ```js
 readonly request!: Request;
 respondWith!: (r: Response | Promise<Response>) => Promise<void> | Response;
-body!: object;
-file!: object;
+
+// more object/func
+body!: TObject;
+file!: TObject;
 responseInit!: ResponseInit;
 response!: HttpResponse;
 url!: string;
-originalUrl!: string;
-params!: object;
+params!: TObject;
 path!: string;
-query!: object;
+conn!: Deno.Conn;
+query!: TObject;
 search!: string | null;
 getCookies!: (decode?: boolean) => Record<string, string>;
 // more...

@@ -1,4 +1,4 @@
-import { NHttp } from "https://deno.land/x/nhttp@1.1.5/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@1.1.7/mod.ts";
 import mime from "https://esm.sh/mime/lite?no-check";
 import { readAll, readerFromStreamReader } from "https://deno.land/std@0.99.0/io/mod.ts";
 
@@ -9,6 +9,8 @@ export const fetch_url = new URL("build", import.meta.url).href;
 // const fetch_url = "https://raw.githubusercontent.com/nhttp/webdocs/master/build";
 
 const app = new NHttp();
+
+const now = new Date();
 
 app.use(async ({ request, response, url }, next) => {
   let isDirectory = url.slice((url.lastIndexOf(".") - 1 >>> 0) + 2) === "";
@@ -22,13 +24,18 @@ app.use(async ({ request, response, url }, next) => {
   try {
     const res = await fetch(fetchFile);
     if (!res.ok || !res.body) return next();
-    if (res.headers.get("ETag")) {
-      response.header("ETag", res.headers.get("ETag") || "");
-    } else if (res.headers.get("last-modified")) {
-      const lastMod = res.headers.get("last-modified") || "";
+    const etag = res.headers.get("ETag");
+    const lastMod = res.headers.get("last-modified");
+    if (etag) {
+      response.header("ETag", etag || "");
+    } else if (lastMod) {
       const key = btoa(lastMod);
       response.header("last-modified", lastMod);
       response.header("ETag", `W/"${key}"`);
+    } else {
+      const stats = await Deno.stat(new URL(fetchFile));
+      response.header("Last-Modified", (stats.mtime || now).toUTCString());
+      response.header("ETag", `W/"${stats.size}-${(stats.mtime || now).getTime()}"`);
     }
     if (request.headers.get("if-none-match") === response.header("ETag")) {
       return response.status(304).send();
