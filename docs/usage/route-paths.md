@@ -5,7 +5,7 @@ sidebar_position: 7
 # Route Paths
 
 ```ts
-import { NHttp } from "https://deno.land/x/nhttp@1.1.9/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@1.1.10/mod.ts";
 
 const app = new NHttp();
 
