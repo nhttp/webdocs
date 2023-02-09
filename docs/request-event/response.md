@@ -1,79 +1,62 @@
----
-sidebar_position: 3
----
+# rev.response
 
-# Response
 The response http server.
+
 ```js
 ...
 // example with status and headers
-app.get("/hello", ({ response }) => {
-    return response.status(200).header({ 'name': 'value' }).send('hello');
+app.get("/hello", (rev) => {
+  rev.response
+    .status(200)
+    .header("key", "value")
+    .send("hello");
 })
 ...
 ```
 
-
-### Response.header
-`header: (key?: object | string | undefined, value?: any) => HttpResponse | string | Headers;`
+### response.header
 
 ```js
-...
-
 // key and value
-response.header("key1", "value1");
+response.header("key", "value");
 
 // with object
-response.header({ "key2": "value2" });
-
-// multiple header
 response.header({
-    "key3": "value3",
-    "key4": "value4"
+  "key": "value",
+  "some": "value",
 });
 
-// get header
-console.log(response.header());
-// => Headers {
-//         "key1":"value1",
-//         "key2":"value2",
-//         "key3":"value3",
-//         "key4":"value4",
-//     }
+// delete
+response.header().delete("key");
 
-// get header by key
-console.log(response.header("key1"));
-// => value1
-
-// delete key1
-response.header().delete("key1");
-console.log(response.header());
-// => Headers {
-//         "key2":"value2",
-//         "key3":"value3",
-//         "key4":"value4",
-//     }
-
-// convert to json object
-console.log(Object.fromEntries(response.header().entries()));
-// => {
-//       "key2":"value2",
-//       "key3":"value3",
-//       "key4":"value4",
-//    }
-
-// reset header
-responseInit.headers = void 0;
-
-console.log(response.header());
-// => Headers { }
+// append
+response.header().append("key", "value2");
 ```
 
-## Response.type
-Shorthand for `response.header("Content-Type", yourContentType);`
+### response.type
 
-### Response.status
+Shorthand for Content-Type headers.
+
+```js
+response.type("html");
+// or
+response.type("text/html");
+```
+
+### response.attachment
+
+Shorthand for Content-Disposition headers.
+
+```js
+response.attachment();
+// or
+response.attachment("myfile.css");
+```
+
+### response.status
+
 `status: (code?: number | undefined) => HttpResponse | number;`
+
 ```js
 // set status
 response.status(201);
@@ -83,27 +66,70 @@ console.log(response.status());
 // => 201
 ```
 
-### Response.send
-`send: (body?: BodyInit | { [k: string]: any } | null) => Promise<void>;`
+### response.statusCode
 
-### Response.json
-`json: (body: { [k: string]: any } | null) => Promise<void>;`
+```js
+// set status
+response.statusCode = 201;
 
-### Response.redirect
-`redirect: (path: string, status?: number) => Promise<void>;`
+// get status
+console.log(response.statusCode);
+// => 201
+```
 
-### Response.cookie
+### response.send
+
+`send: (body?: any) => void`.
+
+Support
+(`string | json | Uint8Array | Blob | Response | null | undefined | ReadableStream | number`).
+
+```js
+// string
+response.send("hello");
+// json
+response.send({ name: "john" });
+
+// more
+```
+
+### response.json
+
+```js
+response.json({ name: "john" });
+```
+
+### response.redirect
+
+```js
+response.redirect("/");
+// or permanently
+response.redirect("/", 301);
+```
+
+### response.cookie
+
 ```js
 ...
 response.cookie("key", "value", {
-    HttpOnly: true,
-    maxAge: 60 * 60,
-    // encode value
-    encode: true
+  httpOnly: true,
+  maxAge: 60 * 60,
+  // encode value
+  encode: true
 })
 ...
 ```
+### response.sendStatus
+Send only status and statusText
+
+```js
+response.sendStatus(201);
+
+// => 201 Created
+```
+
 Type Cookie
+
 ```js
 type Cookie = {
   expires?: Date;

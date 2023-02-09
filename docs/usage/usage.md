@@ -3,66 +3,39 @@ sidebar_position: 1
 ---
 
 # Usage
-First create file `my_app.ts` and copy in the code from the example above.
-```js
-import { NHttp } from "https://deno.land/x/nhttp@1.1.11/mod.ts";
 
-const app = new NHttp();
+First create file `my_app.ts` and copy in the code from the example above.
+
+```js
+import { nhttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
+// or from npm
+// import { nhttp } from "npm:nhttp-land@1.1.12";
+
+const app = nhttp();
 
 app.get("/", (rev) => {
-    return rev.response.send('hello');
+  rev.send("Hello, John");
+  // or json
+  // rev.send({ name: "john" });
 });
 
-// or directly
-app.get("/hello", () => {
-    return "Hello";
-});
-app.get("/hello-json", () => {
-    return { name: "nhttp" };
+app.get("/cat", () => {
+  return "Hello, Cat";
+  // or json
+  // return { name: "cat" };
 });
 
-// Regexp
-app.get(/hello/, () => {
-    return "hello";
+app.get("/hello", (rev) => {
+  rev.respondWith(new Response("Hello, World"));
 });
 
-app.listen(3000, () => {
-    console.log("> Running on port 3000");
+app.listen(8000, () => {
+  console.log("> Running on port 8000");
 });
 ```
-## Running
-Now, run the file `my_app.ts`.
+
+### Run
+
 ```bash
-deno run --allow-net my_app.ts
-```
-
-Example sending json.
-```js
-...
-app.get("/json", ({ response }) => {
-    return response.json({ name: 'nhttp' });
-});
-....
-```
-Example using POST method.
-```js
-...
-app.post("/save", ({ response, body }) => {
-    return response.json(body);
-});
-...
-```
-Example return directly.
-```js
-...
-app.get("/", () => {
-    return "hello";
-});
-app.get("/json", () => {
-    return { name: "john" };
-});
-app.get("/nhttp", () => {
-    return new Response("nhttp");
-});
-....
+deno run -A my_app.ts
 ```

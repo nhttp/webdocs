@@ -5,9 +5,9 @@ sidebar_position: 7
 # Route Paths
 
 ```ts
-import { NHttp } from "https://deno.land/x/nhttp@1.1.11/mod.ts";
+...
 
-const app = new NHttp();
+const app = nhttp();
 
 // normal path
 app.get("/", () => {...});
@@ -38,15 +38,22 @@ app.any("*", (rev) => {
   // => { wild: ["users", "123"] }
 });
 
+// exact/wild named slug. /users/123
+app.any("/:slug*", (rev) => {
+  return rev.params;
+  // => { slug: ["users", "123"] }
+});
+
+
 // RegExp. match for path includes hello.
 app.get(/hello/, (rev) => {
   return rev.path;
 });
 
-// RegExp. match for path endsWith ball. ex: /dragonball and /football
+// RegExp. match for path endsWith ball. ex: /dragonball or /football
 app.get(/.*ball$/, (rev) => {
   return rev.path;
 });
 
-app.listen(3000);
+...
 ```

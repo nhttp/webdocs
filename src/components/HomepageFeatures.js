@@ -23,7 +23,7 @@ const FeatureList = [
     Svg: require('../../static/img/fast.svg').default,
     description: (
       <>
-        Based on native HTTP <a href="https://deno.land/" target="_blank">Deno</a> by <a href="https://hyper.rs">Hyper</a>, NHttp so fast.
+        Based on native HTTP <a href="https://deno.land/" target="_blank">Deno</a> by <a href="https://hyper.rs">Hyper</a> and Support, NHttp so fast.
         <br></br>
         <Link
           to="/docs/intro#benchmark">
@@ -33,15 +33,15 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Easy to Deploy',
+    title: 'Cross Runtime Support',
     Svg: require('../../static/img/deploy.svg').default,
     description: (
       <>
-        NHttp easy deploy to <a href="https://deno.com/deploy" target="_blank">Deno Deploy</a> or <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>.
+        NHttp support runtime <a href="https://deno.land/" target="_blank">Deno</a>, <a href="https://nodejs.org/" target="_blank">Nodejs</a>, <a href="https://bun.sh/" target="_blank">Bun</a>, etc.
         <br></br>
         <Link
-          to="/docs/usage/deploy">
-          <b>Usage Deploy</b>
+          to="/docs/usage/runtime">
+          <b>Usage Other Runtime</b>
         </Link>
       </>
     ),

@@ -1,29 +1,12 @@
----
-sidebar_position: 5
----
+# rev.params
 
-# Parameters
-Just object path parameters.
+Object path parameters.
+
 ```js
-...
-app.get("/user/:name", ({ response, params }) => {
-    console.log(params);
-    // => { name: 'john' }
+app.get("/user/:name", (rev) => {
+  console.log(rev.params);
+  // => { name: 'john' }
 
-    return response.send(params.name);
+  return rev.params.name;
 });
-...
-
-// optional params.
-// => { name: 'john' } or { }
-app.get("/user/:name?", ...handlers);
-
-// extension params (Example: only png and jpg).
-// => { filename: 'name_of_file' }
-app.get("/image/:filename.(png|jpg)", ...handlers);
-
-// exact params.
-// => { wild: ['param1', 'param2'] }
-app.get("*", ...handlers);
-
 ```

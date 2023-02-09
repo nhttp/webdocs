@@ -3,43 +3,39 @@ sidebar_position: 3
 ---
 
 # Middleware
-Middleware is a function to the next handlers.
-```js
-import { NHttp, Handler } from "https://deno.land/x/nhttp@1.1.11/mod.ts";
 
-const app = new NHttp();
+Middleware is a function to the next handlers.
+
+```js
+import { nhttp, Handler } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
+
+const app = nhttp();
 
 const foo: Handler = (rev, next) => {
-    rev.foo = "foo";
-    return next();
+  rev.foo = "foo";
+  return next();
 }
 
 app.use(foo);
 
-app.get("/foo", ({ response, foo }) => {
-    return response.send(foo)
-});
+app.get("/foo", ({ foo }) => foo);
 
 app.listen(3000);
 ```
 
-## Wrapper for express middleware
-Simple wrapper like HOC for middleware (req, res, next);
-> Note: not all middleware can work.
+## Express middleware support
 
 ```js
-import { NHttp, Handler, expressMiddleware, HttpError } from "https://deno.land/x/nhttp@1.1.11/mod.ts";
-import { body, validationResult } from "https://esm.sh/express-validator";
+import { nhttp, Handler, HttpError } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
+import { body, validationResult } from "npm:express-validator";
 
-const app = new NHttp();
+const app = nhttp();
 
 // example express validator
 const validator: Handler[] = [
-  expressMiddleware([
-    body("username").isString(),
-    body("password").isLength({ min: 6 }),
-    body("email").isEmail(),
-  ]),
+  body("username").isString(),
+  body("password").isLength({ min: 6 }),
+  body("email").isEmail(),
   (rev, next) => {
     const errors = validationResult(rev);
     if (!errors.isEmpty()) {
@@ -49,27 +45,7 @@ const validator: Handler[] = [
   },
 ];
 
-app.post("/user", validator, ({ response, body }) => {
-    return response.send(body)
-});
+app.post("/user", validator, ({ body }) => body);
 
 app.listen(3000);
-```
-expressMiddleware(...middleware: any, { beforeWrap });
-
-### BeforeWrap
-Mutate RequestEvent and HttpResponse before wrap middleware. 
-
-```js
-...
-app.use(expressMiddleware(
-    [midd1(), midd2()],
-    {
-        beforeWrap: (rev, res) => {
-            // rev.any = fn;
-            // res.any = fn;
-        }
-    }
-))
-...
 ```

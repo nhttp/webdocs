@@ -1,6 +1,8 @@
-import { NHttp } from "https://deno.land/x/nhttp@1.1.11/mod.ts";
+import { NHttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
 import mime from "https://esm.sh/mime/lite?no-check";
 import { readAll, readerFromStreamReader } from "https://deno.land/std@0.99.0/io/mod.ts";
+
+// old docu need : export NODE_OPTIONS=--openssl-legacy-provider
 
 // deno support. but cf_workers not support
 export const fetch_url = new URL("build", import.meta.url).href;
@@ -13,7 +15,7 @@ const app = new NHttp();
 const now = new Date();
 
 app.use(async ({ request, response, url }, next) => {
-  let isDirectory = url.slice((url.lastIndexOf(".") - 1 >>> 0) + 2) === "";
+  const isDirectory = url.slice((url.lastIndexOf(".") - 1 >>> 0) + 2) === "";
   let fetchFile = fetch_url + url;
   if (isDirectory) {
     if (fetchFile[fetchFile.length - 1] !== "/") {
@@ -47,7 +49,7 @@ app.use(async ({ request, response, url }, next) => {
     response.header("Content-Type", mime.getType(ext));
     const reader = readerFromStreamReader(res.body.getReader());
     const body = await readAll(reader);
-    response.header("x-powered-by", "NHttp Deno");
+    response.header("x-powered-by", "nhttp");
     return response.send(body);
   } catch (error) {
     return next(error);

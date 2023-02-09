@@ -2,24 +2,26 @@
 sidebar_position: 1
 ---
 
-# Request Event
-RequestEvent or Deno.RequestEvent (rev) is a some object like :
+# rev
 
+rev as `RequestEvent`. related to `Deno.RequestEvent` or
+[FetchEvent](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent) Web API. This
+is the event type for request events dispatched on the server. It
+contains information about the server routers, including the request and how the
+receiver will treat the response. It provides the `rev.respondWith`, `rev.send`
+and more method, which allows us to provide a response to this.
+
+### Example Code
 ```js
-readonly request!: Request;
-respondWith!: (r: Response | Promise<Response>) => Promise<void> | Response;
+import { nhttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
 
-// more object/func
-body!: TObject;
-file!: TObject;
-responseInit!: ResponseInit;
-response!: HttpResponse;
-url!: string;
-params!: TObject;
-path!: string;
-conn!: Deno.Conn;
-query!: TObject;
-search!: string | null;
-getCookies!: (decode?: boolean) => Record<string, string>;
-// more...
+const app = nhttp();
+
+app.get("/", (rev) => {
+  rev.respondWith(new Response("Hello, World !"));
+});
+
+app.listen(8000, () => {
+  console.log("> Running on port 8000");
+});
 ```

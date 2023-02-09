@@ -1,18 +1,13 @@
----
-sidebar_position: 6
----
+# rev.query
 
-# Query
-Just object query parameters.
+Object query parameters.
+
 ```js
-...
 // example: /user?name=john
-app.get("/user", ({ response, query }) => {
-    console.log(query);
-    // => { name: 'john' }
+app.get("/user", (rev) => {
+  console.log(rev.query);
+  // => { name: 'john' }
 
-    return response.send(query.name);
+  return rev.query;
 });
-...
-
 ```

@@ -1,23 +1,21 @@
----
-sidebar_position: 2
----
+# rev.request
 
-# Request
-Just Web API [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request).
+Original Request.
+
 ```js
 ...
-console.log(rev.request.method);
-// => GET
+app.get("/user", (rev) => {
+  console.log(rev.request.method);
+  // => GET
 
-console.log(rev.request.url);
-// => http://localhost:3000/path
+  console.log(rev.request.url);
+  // => http://localhost:8000/user
 
-console.log(new URL(rev.request.url));
-// => URL {...}
+  console.log(rev.request.headers);
+  // => Headers {...}
+});
 
-console.log(rev.request.headers);
-// => Headers {...}
 ...
 ```
 
-> Note: rev.request.url is a full url. rev.url is a path url.
+> Note: rev.request.url is a full url. rev.url is a path url+search.
