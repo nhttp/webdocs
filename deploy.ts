@@ -1,16 +1,14 @@
-import { NHttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
-import mime from "https://esm.sh/mime/lite?no-check";
-import { readAll, readerFromStreamReader } from "https://deno.land/std@0.99.0/io/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
 
 // old docu need : export NODE_OPTIONS=--openssl-legacy-provider
 
 // deno support. but cf_workers not support
-export const fetch_url = new URL("build", import.meta.url).href;
+const fetch_url = new URL("build", import.meta.url).href;
 
 // alternative for build cf_workers
 // const fetch_url = "https://raw.githubusercontent.com/nhttp/webdocs/master/build";
 
-const app = new NHttp();
+const app = nhttp();
 
 const now = new Date();
 
@@ -25,41 +23,38 @@ app.use(async ({ request, response, url }, next) => {
   }
   try {
     const res = await fetch(fetchFile);
-    if (!res.ok || !res.body) return next();
-    const etag = res.headers.get("ETag");
+    if (!res.ok) return next();
+    response.header("x-powered-by", "nhttp");
+    const etag = res.headers.get("etag");
     const lastMod = res.headers.get("last-modified");
     if (etag) {
-      response.header("ETag", etag || "");
+      response.header("etag", etag);
     } else if (lastMod) {
       const key = btoa(lastMod);
       response.header("last-modified", lastMod);
-      response.header("ETag", `W/"${key}"`);
+      response.header("etag", `W/"${key}"`);
     } else {
       const stats = await Deno.stat(new URL(fetchFile));
-      response.header("Last-Modified", (stats.mtime || now).toUTCString());
-      response.header("ETag", `W/"${stats.size}-${(stats.mtime || now).getTime()}"`);
+      response.header("last-modified", (stats.mtime || now).toUTCString());
+      response.header("etag", `W/"${stats.size}-${(stats.mtime || now).getTime()}"`);
     }
-    if (request.headers.get("if-none-match") === response.header("ETag")) {
+    if (request.headers.get("if-none-match") === response.header("etag")) {
       return response.status(304).send();
     }
     if (request.headers.get("range")) {
-      response.header("Accept-Ranges", "bytes");
+      response.header("accept-ranges", "bytes");
     }
-    const ext = fetchFile.substring(fetchFile.lastIndexOf(".") + 1);
-    response.header("Content-Type", mime.getType(ext));
-    const reader = readerFromStreamReader(res.body.getReader());
-    const body = await readAll(reader);
-    response.header("x-powered-by", "nhttp");
-    return response.send(body);
-  } catch (error) {
-    return next(error);
+    response.type(fetchFile.substring(fetchFile.lastIndexOf(".") + 1));
+    return res.text();
+  } catch {
+    return next();
   }
 });
 
 app.on404(async ({ response }) => {
   const res = await fetch(fetch_url + "/404.html");
   const data = await res.text();
-  return response.type("text/html").send(data);
+  response.type("html").send(data);
 });
 
 app.listen(8080);

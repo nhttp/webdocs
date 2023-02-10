@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 # Routing Controller
-Make router as Controller with simple Decorators.
+Make Controller as Router with simple Decorators.
 
 ### Import
 #### Deno

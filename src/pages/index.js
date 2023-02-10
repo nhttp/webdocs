@@ -36,7 +36,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title} Just native HTTP/2 micro framework for Deno. so hot 🚀`}
+      title={`${siteConfig.title} An Simple Http Route framework for Deno and Friends. so hot 🚀`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
