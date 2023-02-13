@@ -4,7 +4,7 @@ NHttp support template engine.
 
 ### Usage
 ```js
-import { nhttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.1.13/mod.ts";
 import ejs from "npm:ejs";
 
 const app = nhttp();
@@ -28,7 +28,7 @@ app.listen(8000, () => {
 ### Jsx
 
 ```js
-import { nhttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.1.13/mod.ts";
 // @deno-types="npm:@types/react"
 import React from "npm:react";
 // @deno-types="npm:@types/react-dom/server"

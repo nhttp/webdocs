@@ -13,7 +13,7 @@ and more method, which allows us to provide a response to this.
 
 ### Example Code
 ```js
-import { nhttp } from "https://deno.land/x/nhttp@1.1.12/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.1.13/mod.ts";
 
 const app = nhttp();
 
