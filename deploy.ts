@@ -1,4 +1,4 @@
-import { nhttp } from "https://deno.land/x/nhttp@1.1.13/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.1.14/mod.ts";
 
 // old docu need : export NODE_OPTIONS=--openssl-legacy-provider
 
