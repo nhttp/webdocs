@@ -1,4 +1,4 @@
-import { nhttp } from "https://deno.land/x/nhttp@1.1.14/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.1.15/mod.ts";
 
 // old docu need : export NODE_OPTIONS=--openssl-legacy-provider
 
@@ -45,7 +45,8 @@ app.use(async ({ request, response, url }, next) => {
       response.header("accept-ranges", "bytes");
     }
     response.type(fetchFile.substring(fetchFile.lastIndexOf(".") + 1));
-    return res.text();
+    const data = await res.text();
+    return data;
   } catch {
     return next();
   }
@@ -54,7 +55,8 @@ app.use(async ({ request, response, url }, next) => {
 app.on404(async ({ response }) => {
   const res = await fetch(fetch_url + "/404.html");
   const data = await res.text();
-  response.type("html").send(data);
+  response.type("html");
+  return data;
 });
 
 app.listen(8080);

@@ -30,6 +30,7 @@ module.exports = {
           label: 'Documentation',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/benchmark', label: 'Http Benchmark', position: 'left'},
         {
           href: 'https://github.com/nhttp/nhttp',
           label: 'GitHub',

@@ -23,7 +23,7 @@ const FeatureList = [
     Svg: require('../../static/img/fast.svg').default,
     description: (
       <>
-        Based on native HTTP <a href="https://deno.land/" target="_blank">Deno</a> by <a href="https://hyper.rs">Hyper</a> and Support, NHttp so fast.
+        Based on native HTTP <a href="https://deno.land/" target="_blank">Deno</a> by <a href="https://hyper.rs">Hyper</a> or Deno Flash, NHttp so fast.
         <br></br>
         <Link
           to="/docs/intro#benchmark">
