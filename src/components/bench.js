@@ -24,7 +24,7 @@ export default function Benchmark() {
   if (loading) return <h1>loading...</h1>;
   return (
     <div>
-      <i>Run At : {date}</i>
+      <i>Auto Run Benchmark At : {date}</i>
       <table>
         <thead>
           <tr>
@@ -56,7 +56,8 @@ export default function Benchmark() {
           
         </tbody>
       </table>
-      
+      <p>For more Framework ? create PR to <a href="https://github.com/herudi/deno_benchmarks" target="_blank" rel="noopener noreferrer">deno_benchmarks</a></p>
+      <p>Created By : <a href="https://github.com/herudi/deno_benchmarks/commits?author=github-actions%5Bbot%5D" target="_blank" rel="noopener noreferrer">bot_ci</a></p>
     </div>
   )
 }
