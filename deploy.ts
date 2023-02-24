@@ -38,7 +38,8 @@ app.use(async ({ request, response, url }, next) => {
       response.header("last-modified", (stats.mtime || now).toUTCString());
       response.header("etag", `W/"${stats.size}-${(stats.mtime || now).getTime()}"`);
     }
-    if (request.headers.get("if-none-match") === response.header("etag")) {
+    const noneMatch = request.headers.get("if-none-match");
+    if (noneMatch && noneMatch === response.header("etag")) {
       return response.status(304).send();
     }
     if (request.headers.get("range")) {

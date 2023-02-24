@@ -5,6 +5,7 @@
 .docusaurus
 .cache-loader
 
+dev.ts
 note.txt
 # Misc
 .DS_Store

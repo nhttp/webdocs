@@ -28,11 +28,12 @@ export default function Benchmark() {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Rank</th>
+            <th>Framework</th>
             <th>AVG</th>
             <th>GET /</th>
             <th>GET /blog/99?title=bench</th>
-            <th>GET /api/user</th>
+            <th>GET /api/user (send json)</th>
             <th>Lang/Runtime</th>
           </tr>
         </thead>
@@ -40,6 +41,7 @@ export default function Benchmark() {
           {data.map((el, i) => {
             return (
               <tr key={i}>
+                <td>{i+1}</td>
                 <td>
                   <a href={el.Name} target="_blank" rel="noopener noreferrer">{el.OriginalName}</a>
                 </td>

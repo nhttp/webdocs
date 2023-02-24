@@ -16,12 +16,15 @@ sidebar_position: 1
 
 ## Features
 
-- Simple Performance.
+- Easy to use.
+- Simple performance.
+- Cross runtime support (Deno, Bun, Node, etc).
+- Low overhead & True handlers (no caching anything).
+- Small & Zero deps.
 - Middleware support.
-- Sub Router support.
+- Sub router support.
 - Return directly on handlers.
-- Includes body parser with verify body.
-- Cross Runtime support (Deno, Bun, Node, etc).
+- Auto parses the body (`json / urlencoded / multipart / raw`).
 
 [See examples](https://github.com/nhttp/nhttp/tree/master/examples)
 
@@ -31,6 +34,12 @@ sidebar_position: 1
 
 ```ts
 import { nhttp } from "https://deno.land/x/nhttp@1.1.15/mod.ts";
+```
+
+### deno-npm
+
+```ts
+import { nhttp } from "npm:nhttp-land@1.1.15";
 ```
 
 ### nest.land
@@ -60,20 +69,12 @@ import { nhttp } from "https://deno.land/x/nhttp@1.1.15/mod.ts";
 
 const app = nhttp();
 
-app.get("/", (rev) => {
-  rev.send("Hello, John");
-  // or json
-  // rev.send({ name: "john" });
+app.get("/", () => {
+  return "Hello, World";
 });
 
 app.get("/cat", () => {
-  return "Hello, Cat";
-  // or json
-  // return { name: "cat" };
-});
-
-app.get("/hello", (rev) => {
-  rev.respondWith(new Response("Hello, World"));
+  return { name: "cat" };
 });
 
 app.listen(8000, () => {
@@ -106,6 +107,16 @@ app.use((rev, next) => {
 });
 
 app.get("/", ({ foo }) => foo);
+
+// inline middleware
+app.get(
+  "/inline",
+  (rev, next) => {
+    rev.bar = "bar";
+    return next();
+  },
+  ({ foo, bar }) => foo + bar
+);
 ```
 
 ## Body Parser
@@ -117,7 +128,7 @@ Support `json / urlencoded / multipart / raw`.
 ```ts
 const app = nhttp();
 
-// if want disable bodyParser
+// if you want disable bodyParser
 // const app = nhttp({ bodyParser: false });
 
 app.post("/save", (rev) => {
@@ -131,23 +142,15 @@ app.post("/save", (rev) => {
 
 ## Other Runtime (Bun / Node)
 
+> for nodejs, requires v18.14.0 or higher. cause it uses `Web Stream API` like
+> `ReadableStream`.
+
 ```ts
-import { multipart, nhttp } from "nhttp-land";
+import { nhttp } from "nhttp-land";
 
 const app = nhttp();
 
 app.get("/", () => "hello, world");
-
-// example upload
-const upload = multipart.upload({
-  name: "image",
-  writeFile: Bun.write, /* or fs.writeFileSync */
-});
-app.post("/upload", upload, (rev) => {
-  console.log(rev.file);
-  console.log(rev.body);
-  return "success upload";
-});
 
 app.listen(8000, () => {
   console.log("> Running on port 8000");
@@ -162,10 +165,8 @@ app.listen(8000, () => {
 ```json
 {
   "compilerOptions": {
-    "types": ["bun-types"],
-    "experimentalDecorators": true,
-    "moduleResolution": "nodenext",
-    "target": "ES5",
+    // if bun
+    // "types": ["bun-types"],
     "lib": [
       "DOM",
       "DOM.Iterable",
