@@ -10,11 +10,11 @@ Simple validator Inspired by [class-validator](https://github.com/typestack/clas
 #### Deno
 
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.1.15/lib/class-validator.ts";
+import {...} from "https://deno.land/x/nhttp@1.1.18/lib/class-validator.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.1.15/class-validator";
+import {...} from "npm:nhttp-land@1.1.18/class-validator";
 ```
 
 #### Node / Bun
@@ -48,14 +48,14 @@ import {...} from "nhttp-land/class-validator";
 ```ts
 import {
   Controller,
-  Get,
-} from "https://deno.land/x/nhttp@1.1.15/lib/controller.ts";
+  Post,
+} from "https://deno.land/x/nhttp@1.1.18/lib/controller.ts";
 import {
   IsEmail,
   IsPhoneNumber,
   IsString,
-  validate,
-} from "https://deno.land/x/nhttp@1.1.15/lib/class-validator.ts";
+  Validate,
+} from "https://deno.land/x/nhttp@1.1.18/lib/class-validator.ts";
 
 // Person Dto
 class PersonDto {
