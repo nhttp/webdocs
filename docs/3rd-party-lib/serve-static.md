@@ -4,11 +4,11 @@ Serving assets.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.1.19/lib/serve-static.ts";
+import {...} from "https://deno.land/x/nhttp@1.1.20/lib/serve-static.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.1.19/serve-static";
+import {...} from "npm:nhttp-land@1.1.20/serve-static";
 ```
 #### Node / Bun
 ```ts
@@ -19,8 +19,8 @@ import {...} from "nhttp-land/serve-static";
 
 ### Usage
 ```ts
-import { nhttp } from "https://deno.land/x/nhttp@1.1.19/mod.ts";
-import { serveStatic } from "https://deno.land/x/nhttp@1.1.19/lib/serve-static.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.1.20/mod.ts";
+import { serveStatic } from "https://deno.land/x/nhttp@1.1.20/lib/serve-static.ts";
 
 const app = nhttp();
 

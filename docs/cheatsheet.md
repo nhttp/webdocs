@@ -141,8 +141,8 @@ app.post("/upload", upload, (rev) => {
 ```
 ### Routing Controller
 ```ts
-import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.1.19/mod.ts";
-import { Get, Post, Status, Controller } from "https://deno.land/x/nhttp@1.1.19/lib/controller.ts";
+import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.1.20/mod.ts";
+import { Get, Post, Status, Controller } from "https://deno.land/x/nhttp@1.1.20/lib/controller.ts";
 
 @Controller("/hello")
 class HelloController {
