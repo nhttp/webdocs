@@ -24,22 +24,11 @@ import { nhttp } from "nhttp-land";
 ### Usage (Bun / Node)
 
 ```ts
-import { multipart, nhttp } from "nhttp-land";
+import { nhttp } from "nhttp-land";
 
 const app = nhttp();
 
 app.get("/", () => "hello, world");
-
-// example upload
-const upload = multipart.upload({
-  name: "image",
-  writeFile: Bun.write, /* or fs.writeFileSync */
-});
-app.post("/upload", upload, (rev) => {
-  console.log(rev.file);
-  console.log(rev.body);
-  return "success upload";
-});
 
 app.listen(8000, () => {
   console.log("> Running on port 8000");
@@ -55,7 +44,6 @@ app.listen(8000, () => {
 {
   "compilerOptions": {
     "types": ["bun-types"],
-    "experimentalDecorators": true,
     "moduleResolution": "nodenext",
     "target": "ES5",
     "lib": [

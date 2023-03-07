@@ -1,6 +1,6 @@
 import React from 'react';
 
-const link = "https://raw.githubusercontent.com/herudi/deno_benchmarks/master/results/result.json";
+const link = "https://raw.githubusercontent.com/nhttp/benchmarks/master/results/result.json";
 export default function Benchmark() {
   const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
@@ -9,14 +9,14 @@ export default function Benchmark() {
   const bench = async () => {
     const res = await fetch(link);
     if (res.ok) {
-      const json = await res.json();
+      const datas = await res.json();
       setLoading(false);
-      const arr = json.map((el) => {
+      const arr = datas.map((el) => {
         return {
           ...el,
-          Name: el.Name.split("](")[1].replace(")", "")
+          href: el.Name.split("](")[1].replace(")", "")
         }
-      })
+      }).filter((el) => el["Lang/Runtime"] === "Deno");
       setData(arr);
       setDate(arr[0]?.["Date"]);
     }
@@ -43,7 +43,7 @@ export default function Benchmark() {
               <tr key={i}>
                 <td>{i+1}</td>
                 <td>
-                  <a href={el.Name} target="_blank" rel="noopener noreferrer">{el.OriginalName}</a>
+                  <a href={el.href} target="_blank" rel="noopener noreferrer">{el.OriginalName}</a>
                 </td>
                 <td>{el["AVG"]}</td>
                 <td>{el["GET /"]}</td>
@@ -56,8 +56,8 @@ export default function Benchmark() {
           
         </tbody>
       </table>
-      <p>For more Framework ? create PR to <a href="https://github.com/herudi/deno_benchmarks" target="_blank" rel="noopener noreferrer">deno_benchmarks</a></p>
-      <p>Created By : <a href="https://github.com/herudi/deno_benchmarks/commits?author=github-actions%5Bbot%5D" target="_blank" rel="noopener noreferrer">bot_ci</a></p>
+      <p>For more Framework ? create PR to <a href="https://github.com/nhttp/benchmarks" target="_blank" rel="noopener noreferrer">benchmarks</a></p>
+      <p>Created By : <a href="https://github.com/nhttp/benchmarks/commits?author=github-actions%5Bbot%5D" target="_blank" rel="noopener noreferrer">bot_ci</a></p>
     </div>
   )
 }

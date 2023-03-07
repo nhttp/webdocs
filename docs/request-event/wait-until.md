@@ -3,8 +3,6 @@
 This method tells the event dispatcher that work is ongoing. It can also be used
 to detect whether that work was successful.
 
-> Only support modern edge-runtime. `Nodejs` not supported.
-
 ### Example Cache Response
 
 ```ts
