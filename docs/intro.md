@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [![nhttp ci](https://github.com/nhttp/nhttp/workflows/ci/badge.svg)](https://github.com/nhttp/nhttp)
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
-[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.1.20%2Fmod.ts)](https://deno.land/x/nhttp)
+[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.0%2Fmod.ts)](https://deno.land/x/nhttp)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](http://makeapullrequest.com)
 ![deps badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
 ![cache badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fcache-size%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
@@ -16,36 +16,39 @@ sidebar_position: 1
 
 ## Features
 
+- Crazy Fast.
 - Easy to use.
-- Simple performance.
 - Cross runtime support (Deno, Bun, Node, etc).
 - Low overhead & True handlers (no caching anything).
 - Small & Zero deps.
 - Middleware support.
 - Sub router support.
+- Template engine support (jsx, ejs, nunjucks, eta, pug, ..etc).
 - Return directly on handlers.
 - Auto parses the body (`json / urlencoded / multipart / raw`).
 
-[See examples](https://github.com/nhttp/nhttp/tree/master/examples)
+[See Examples](https://github.com/nhttp/nhttp/tree/master/examples)
+
+[See Benchmark](https://nhttp.deno.dev/benchmark)
 
 ## Installation
 
 ### deno.land
 
 ```ts
-import { nhttp } from "https://deno.land/x/nhttp@1.1.20/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.2.0/mod.ts";
 ```
 
 ### deno-npm
 
 ```ts
-import { nhttp } from "npm:nhttp-land@1.1.20";
+import { nhttp } from "npm:nhttp-land@1.2.0";
 ```
 
 ### nest.land
 
 ```ts
-import { nhttp } from "https://x.nest.land/nhttp@1.1.20/mod.ts";
+import { nhttp } from "https://x.nest.land/nhttp@1.2.0/mod.ts";
 ```
 
 ### npm/yarn
@@ -65,7 +68,7 @@ import { nhttp } from "nhttp-land";
 ## Usage
 
 ```ts
-import { nhttp } from "https://deno.land/x/nhttp@1.1.20/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.2.0/mod.ts";
 
 const app = nhttp();
 
@@ -107,16 +110,6 @@ app.use((rev, next) => {
 });
 
 app.get("/", ({ foo }) => foo);
-
-// inline middleware
-app.get(
-  "/inline",
-  (rev, next) => {
-    rev.bar = "bar";
-    return next();
-  },
-  ({ foo, bar }) => foo + bar
-);
 ```
 
 ## Body Parser
@@ -151,6 +144,7 @@ import { nhttp } from "nhttp-land";
 const app = nhttp();
 
 app.get("/", () => "hello, world");
+app.get("/res", () => new Response("hello"));
 
 app.listen(8000, () => {
   console.log("> Running on port 8000");
@@ -160,7 +154,7 @@ app.listen(8000, () => {
 // export default { fetch: app.handle };
 ```
 
-## tsconfig
+## tsconfig (Bun / Node)
 
 ```json
 {
@@ -174,6 +168,37 @@ app.listen(8000, () => {
     ]
   }
 }
+```
+
+## Jsx
+
+```jsx
+/** @jsx n */
+/** @jsxFrag n.Fragment */
+
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.0/lib/jsx.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.2.0/mod.ts";
+
+const Home: FC<{ title: string }> = (props) => {
+  return (
+    <>
+      <Helmet>
+        <title>{props.title}</title>
+      </Helmet>
+      <h1>Home Page</h1>
+    </>
+  );
+};
+
+const app = nhttp();
+
+app.engine(renderToHtml);
+
+app.get("/", () => <Home title="welcome jsx" />);
+
+app.listen(8000, () => {
+  console.log("> Running on port 8000");
+});
 ```
 
 ## License

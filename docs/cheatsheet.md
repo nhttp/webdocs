@@ -125,7 +125,35 @@ app.get("/", ({ response }) => {
   response.render("index", { title: "Hello, World" });
 });
 ```
+### Jsx
+```jsx
+/** @jsx n */
+/** @jsxFrag n.Fragment */
 
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.0/lib/jsx.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.2.0/mod.ts";
+
+const Home: FC<{ title: string }> = (props) => {
+  return (
+    <>
+      <Helmet>
+        <title>{props.title}</title>
+      </Helmet>
+      <h1>Home Page</h1>
+    </>
+  );
+};
+
+const app = nhttp();
+
+app.engine(renderToHtml);
+
+app.get("/", () => <Home title="welcome jsx" />);
+
+app.listen(8000, () => {
+  console.log("> Running on port 8000");
+});
+```
 ### Upload
 ```ts
 const app = nhttp();
@@ -141,8 +169,8 @@ app.post("/upload", upload, (rev) => {
 ```
 ### Routing Controller
 ```ts
-import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.1.20/mod.ts";
-import { Get, Post, Status, Controller } from "https://deno.land/x/nhttp@1.1.20/lib/controller.ts";
+import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.2.0/mod.ts";
+import { Get, Post, Status, Controller } from "https://deno.land/x/nhttp@1.2.0/lib/controller.ts";
 
 @Controller("/hello")
 class HelloController {
