@@ -7,13 +7,13 @@ sidebar_position: 2
 ### deno.land
 
 ```ts
-import { nhttp } from "https://deno.land/x/nhttp@1.2.0/mod.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
 ```
 
 ### nest.land
 
 ```ts
-import { nhttp } from "https://x.nest.land/nhttp@1.2.0/mod.ts";
+import { nhttp } from "https://x.nest.land/nhttp@1.2.1/mod.ts";
 ```
 
 ### npm/yarn

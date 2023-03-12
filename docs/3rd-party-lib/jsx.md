@@ -4,11 +4,11 @@ Simple jsx libs.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.0/lib/jsx.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.1/lib/jsx.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.2.0/jsx";
+import {...} from "npm:nhttp-land@1.2.1/jsx";
 ```
 #### Node / Bun
 ```ts
@@ -34,8 +34,8 @@ import {...} from "nhttp-land/jsx";
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.0/lib/jsx.ts";
-import { nhttp } from "https://deno.land/x/nhttp@1.2.0/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.1/lib/jsx.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -72,4 +72,39 @@ app.listen(8000, () => {
     <h1>Home Page</h1>
   </body>
 </html>
+```
+
+### Using middleware
+```jsx
+/** @jsx n */
+/** @jsxFrag n.Fragment */
+
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.1/lib/jsx.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
+
+const Home: FC<{ title: string }> = (props) => {
+  return (
+    <>
+      <Helmet>
+        <title>{props.title}</title>
+      </Helmet>
+      <h1>Home Page</h1>
+    </>
+  );
+};
+
+const app = nhttp();
+
+app.use((rev, next) => {
+  rev.jsx = (elem: JSX.Element) => {
+    rev.response.type("text/html; charset=utf-8").send(renderToHtml(elem));
+  }
+  return next();
+});
+
+app.get("/", ({ jsx }) => jsx(<Home title="welcome jsx" />));
+
+app.listen(8000, () => {
+  console.log("> Running on port 8000");
+});
 ```
