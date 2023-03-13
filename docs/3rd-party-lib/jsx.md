@@ -4,11 +4,11 @@ Simple jsx libs.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.1/lib/jsx.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.2/lib/jsx.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.2.1/jsx";
+import {...} from "npm:nhttp-land@1.2.2/jsx";
 ```
 #### Node / Bun
 ```ts
@@ -34,8 +34,8 @@ import {...} from "nhttp-land/jsx";
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.1/lib/jsx.ts";
-import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.2/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.2/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -79,8 +79,8 @@ app.listen(8000, () => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.1/lib/jsx.ts";
-import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.2/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.2/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (

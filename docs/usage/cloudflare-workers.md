@@ -44,7 +44,7 @@ zone_id = ""
 Modify index.js
 
 ```js
-import { nhttp } from "nhttp-land";
+import nhttp from "nhttp-land";
 
 const app = nhttp();
 

@@ -18,13 +18,13 @@ yarn add nhttp-land
 ```
 
 ```ts
-import { nhttp } from "nhttp-land";
+import nhttp from "nhttp-land";
 ```
 
 ### Usage (Bun / Node)
 
 ```ts
-import { nhttp } from "nhttp-land";
+import nhttp from "nhttp-land";
 
 const app = nhttp();
 

@@ -7,13 +7,13 @@ sidebar_position: 2
 ### deno.land
 
 ```ts
-import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.2/mod.ts";
 ```
 
 ### nest.land
 
 ```ts
-import { nhttp } from "https://x.nest.land/nhttp@1.2.1/mod.ts";
+import nhttp from "https://x.nest.land/nhttp@1.2.2/mod.ts";
 ```
 
 ### npm/yarn
@@ -27,5 +27,9 @@ yarn add nhttp-land
 ```
 
 ```ts
-import { nhttp } from "nhttp-land";
+// module
+import nhttp from "nhttp-land";
+
+// commonjs
+const nhttp = require("nhttp-land").default;
 ```

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [![nhttp ci](https://github.com/nhttp/nhttp/workflows/ci/badge.svg)](https://github.com/nhttp/nhttp)
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
-[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.1%2Fmod.ts)](https://deno.land/x/nhttp)
+[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.2%2Fmod.ts)](https://deno.land/x/nhttp)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](http://makeapullrequest.com)
 ![deps badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
 ![cache badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fcache-size%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
@@ -36,19 +36,19 @@ sidebar_position: 1
 ### deno.land
 
 ```ts
-import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.2/mod.ts";
 ```
 
 ### deno-npm
 
 ```ts
-import { nhttp } from "npm:nhttp-land@1.2.1";
+import nhttp from "npm:nhttp-land@1.2.2";
 ```
 
 ### nest.land
 
 ```ts
-import { nhttp } from "https://x.nest.land/nhttp@1.2.1/mod.ts";
+import nhttp from "https://x.nest.land/nhttp@1.2.2/mod.ts";
 ```
 
 ### npm/yarn
@@ -62,13 +62,17 @@ yarn add nhttp-land
 ```
 
 ```ts
-import { nhttp } from "nhttp-land";
+// module
+import nhttp from "nhttp-land";
+
+// commonjs
+const nhttp = require("nhttp-land").default;
 ```
 
 ## Usage
 
 ```ts
-import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.2/mod.ts";
 
 const app = nhttp();
 
@@ -139,7 +143,7 @@ app.post("/save", (rev) => {
 > `ReadableStream`.
 
 ```ts
-import { nhttp } from "nhttp-land";
+import nhttp from "nhttp-land";
 
 const app = nhttp();
 
@@ -176,8 +180,8 @@ app.listen(8000, () => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.1/lib/jsx.ts";
-import { nhttp } from "https://deno.land/x/nhttp@1.2.1/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.2/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.2/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
