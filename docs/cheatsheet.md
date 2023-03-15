@@ -130,8 +130,8 @@ app.get("/", ({ response }) => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.5/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.2.5/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.6/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.6/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -169,8 +169,8 @@ app.post("/upload", upload, (rev) => {
 ```
 ### Routing Controller
 ```ts
-import nhttp, { RequestEvent } from "https://deno.land/x/nhttp@1.2.5/mod.ts";
-import { Get, Post, Status, Controller } from "https://deno.land/x/nhttp@1.2.5/lib/controller.ts";
+import nhttp, { RequestEvent } from "https://deno.land/x/nhttp@1.2.6/mod.ts";
+import { Get, Post, Status, Controller } from "https://deno.land/x/nhttp@1.2.6/lib/controller.ts";
 
 @Controller("/hello")
 class HelloController {

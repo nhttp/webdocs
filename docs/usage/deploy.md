@@ -7,7 +7,7 @@ sidebar_position: 2
 First create file `my_app.ts` and copy in the code from the example above.
 
 ```js
-import nhttp from "https://deno.land/x/nhttp@1.2.5/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.6/mod.ts";
 
 const app = nhttp();
 
