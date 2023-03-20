@@ -1,65 +1,65 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'NHttp',
-  tagline: 'An simple http route framework for Deno and Friends. so hot 🚀',
-  url: 'https://nhttp.deno.dev',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'nhttp', // Usually your GitHub org/user name.
-  projectName: 'nhttp', // Usually your repo name.
+  title: "NHttp",
+  tagline: "An Simple web-framework for Deno and Friends. so hot 🚀",
+  url: "https://nhttp.deno.dev",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+  organizationName: "nhttp", // Usually your GitHub org/user name.
+  projectName: "nhttp", // Usually your repo name.
   themeConfig: {
     colorMode: {
-      defaultMode: 'dark'
+      defaultMode: "dark",
     },
     navbar: {
-      title: 'NHttp',
+      title: "NHttp",
       logo: {
-        alt: 'NHttp',
-        src: 'img/deno.svg',
+        alt: "NHttp",
+        src: "img/deno.svg",
       },
       items: [
         {
-          type: 'doc',
-          docId: 'intro',
-          position: 'left',
-          label: 'Documentation',
+          type: "doc",
+          docId: "intro",
+          position: "left",
+          label: "Documentation",
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {to: '/benchmark', label: 'Http Benchmark', position: 'left'},
+        { to: "/blog", label: "Blog", position: "left" },
+        { to: "/benchmark", label: "Http Benchmark", position: "left" },
         {
-          href: 'https://github.com/nhttp/nhttp',
-          label: 'GitHub',
-          position: 'right',
+          href: "https://github.com/nhttp/nhttp",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Documentation',
-              to: '/docs/intro',
+              label: "Documentation",
+              to: "/docs/intro",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: "Blog",
+              to: "/blog",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/nhttp/nhttp',
+              label: "GitHub",
+              href: "https://github.com/nhttp/nhttp",
             },
           ],
         },
@@ -79,22 +79,20 @@ module.exports = {
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/nhttp/webdocs/edit/master/',
+          editUrl: "https://github.com/nhttp/webdocs/edit/master/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/nhttp/webdocs/edit/master/',
+          editUrl: "https://github.com/nhttp/webdocs/edit/master/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],
