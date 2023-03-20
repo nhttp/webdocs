@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [![nhttp ci](https://github.com/nhttp/nhttp/workflows/ci/badge.svg)](https://github.com/nhttp/nhttp)
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
-[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.7%2Fmod.ts)](https://deno.land/x/nhttp)
+[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.8%2Fmod.ts)](https://deno.land/x/nhttp)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](http://makeapullrequest.com)
 ![deps badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
 ![cache badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fcache-size%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
@@ -18,9 +18,8 @@ sidebar_position: 1
 
 - Crazy Fast.
 - Easy to use.
-- Cross runtime support (Deno, Bun, Node, etc).
+- Cross runtime support (Deno, Node, Bun, etc).
 - Low overhead & True handlers (no caching anything).
-- Small & Zero deps.
 - Middleware support.
 - Sub router support.
 - Template engine support (jsx, ejs, nunjucks, eta, pug, ..etc).
@@ -36,19 +35,19 @@ sidebar_position: 1
 ### deno.land
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.7/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.8/mod.ts";
 ```
 
 ### deno-npm
 
 ```ts
-import nhttp from "npm:nhttp-land@1.2.7";
+import nhttp from "npm:nhttp-land@1.2.8";
 ```
 
 ### nest.land
 
 ```ts
-import nhttp from "https://x.nest.land/nhttp@1.2.7/mod.ts";
+import nhttp from "https://x.nest.land/nhttp@1.2.8/mod.ts";
 ```
 
 ### npm/yarn
@@ -72,7 +71,7 @@ const nhttp = require("nhttp-land").default;
 ## Usage
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.7/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.8/mod.ts";
 
 const app = nhttp();
 
@@ -137,25 +136,38 @@ app.post("/save", (rev) => {
 // app.post("/save", bodyParser(), (rev) => {...});
 ```
 
-## Other Runtime (Bun / Node)
+## Other Runtime (Node / Bun)
 
-> for nodejs, requires v18.14.0 or higher. cause it uses `Web Stream API` like
-> `ReadableStream`.
+> for nodejs, requires v18.0.0 or higher. cause it uses
+> [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
 ```ts
 import nhttp from "nhttp-land";
 
 const app = nhttp();
 
-app.get("/", () => "hello, world");
-app.get("/res", () => new Response("hello"));
+app.get("/", () => new Response("hello"));
+
+app.get("/hello", () => "Hello, World");
 
 app.listen(8000, () => {
   console.log("> Running on port 8000");
 });
+```
 
-// if cfw or other runtime, just invoke app.handle
-// export default { fetch: app.handle };
+### Coudflare Workers
+
+```ts
+import nhttp from "nhttp-land";
+
+const app = nhttp();
+
+app.get("/hello", () => "Hello, World");
+
+export default app.module();
+
+// for other just invoke app.handle
+// export default app.handle;
 ```
 
 ## tsconfig (Bun / Node)
@@ -180,8 +192,8 @@ app.listen(8000, () => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.7/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.2.7/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.8/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.8/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (

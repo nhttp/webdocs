@@ -1,5 +1,5 @@
-import nhttp, { Handler } from "https://deno.land/x/nhttp@1.2.7/mod.ts";
-import serveStatic from "https://deno.land/x/nhttp@1.2.7/lib/serve-static.ts";
+import nhttp, { Handler } from "https://deno.land/x/nhttp@1.2.8/mod.ts";
+import serveStatic from "https://deno.land/x/nhttp@1.2.8/lib/serve-static.ts";
 
 // legacy => export NODE_OPTIONS=--openssl-legacy-provider
 

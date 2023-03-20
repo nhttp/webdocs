@@ -4,11 +4,11 @@ Simple etag libs.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.7/lib/etag.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.8/lib/etag.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.2.7/etag";
+import {...} from "npm:nhttp-land@1.2.8/etag";
 ```
 #### Node / Bun
 ```ts
@@ -19,8 +19,8 @@ import {...} from "nhttp-land/etag";
 
 ### Usage
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.7/mod.ts";
-import etag from "https://deno.land/x/nhttp@1.2.7/lib/etag.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.8/mod.ts";
+import etag from "https://deno.land/x/nhttp@1.2.8/lib/etag.ts";
 
 const app = nhttp();
 
@@ -35,8 +35,8 @@ app.listen(8000);
 
 ### Sendfile with Etag
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.7/mod.ts";
-import { sendFile } from "https://deno.land/x/nhttp@1.2.7/lib/etag.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.8/mod.ts";
+import { sendFile } from "https://deno.land/x/nhttp@1.2.8/lib/etag.ts";
 
 const app = nhttp();
 

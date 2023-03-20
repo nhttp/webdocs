@@ -4,11 +4,11 @@ Simple adapter tRPC for nhttp.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.7/lib/trpc.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.8/lib/trpc.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.2.7/trpc";
+import {...} from "npm:nhttp-land@1.2.8/trpc";
 ```
 #### Node / Bun
 ```bash
@@ -22,8 +22,8 @@ import {...} from "nhttp-land/trpc";
 
 ### Usage
 ```ts
-import nhttp, { RequestEvent } from "https://deno.land/x/nhttp@1.2.7/mod.ts";
-import adapter from "https://deno.land/x/nhttp@1.2.7/lib/trpc.ts";
+import nhttp, { RequestEvent } from "https://deno.land/x/nhttp@1.2.8/mod.ts";
+import adapter from "https://deno.land/x/nhttp@1.2.8/lib/trpc.ts";
 import { initTRPC } from "npm:@trpc/server";
 
 // tRPC router
