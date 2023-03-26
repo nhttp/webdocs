@@ -9,9 +9,15 @@
     <icon>https://nhttp.deno.dev/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Hello]]></title>
-        <id>hello-world</id>
+        <id>https://nhttp.deno.dev/blog/hello-world</id>
         <link href="https://nhttp.deno.dev/blog/hello-world"/>
         <updated>2021-07-12T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Welcome to this blog.]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to this blog.</p><p>This is a test post.</p><p>A whole bunch of other information.</p>]]></content>
+        <author>
+            <name>Herudi</name>
+            <uri>https://github.com/herudi</uri>
+        </author>
+        <category label="hello" term="hello"/>
     </entry>
 </feed>
