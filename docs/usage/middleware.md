@@ -7,7 +7,7 @@ sidebar_position: 3
 Middleware is a function to the next handlers.
 
 ```js
-import { nhttp, Handler } from "https://deno.land/x/nhttp@1.2.8/mod.ts";
+import { nhttp, Handler } from "https://deno.land/x/nhttp@1.2.9/mod.ts";
 
 const app = nhttp();
 
@@ -26,7 +26,7 @@ app.listen(3000);
 ## Express middleware support
 
 ```js
-import { nhttp, Handler, HttpError } from "https://deno.land/x/nhttp@1.2.8/mod.ts";
+import { nhttp, Handler, HttpError } from "https://deno.land/x/nhttp@1.2.9/mod.ts";
 import { body, validationResult } from "npm:express-validator";
 
 const app = nhttp();
