@@ -18,6 +18,19 @@ import {...} from "nhttp-land/jwt";
 ```
 ### Usage
 ```ts
+...
+import jwt from "https://deno.land/x/nhttp@1.2.9/lib/jwt.ts";
+
+const app = nhttp();
+
+app.get("/admin/home", jwt("myjwtsecret"), (rev) => {
+  console.log("Payload => ", rev.auth);
+  return rev.auth;
+});
+...
+```
+### Example
+```ts
 import nhttp from "https://deno.land/x/nhttp@1.2.9/mod.ts";
 import validate, { z } from "https://deno.land/x/nhttp@1.2.9/lib/zod-validator.ts";
 import jwt from "https://deno.land/x/nhttp@1.2.9/lib/jwt.ts";
