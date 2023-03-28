@@ -26,7 +26,7 @@ const FeatureList = [
         Based on native HTTP <a href="https://deno.land/" target="_blank">Deno</a> by <a href="https://hyper.rs">Hyper</a> or Deno Flash, NHttp so fast.
         <br></br>
         <Link
-          to="/docs/intro#benchmark">
+          to="/benchmark">
           <b>Benchmark</b>
         </Link>
       </>

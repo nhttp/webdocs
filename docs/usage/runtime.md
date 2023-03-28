@@ -5,7 +5,7 @@ sidebar_position: 8
 # Other Runtime
 Support Bun, Node, CF-Workers, etc.
 
-> For Nodejs, requires v18.14.0 or higher.
+> For Nodejs, requires v18.0.0 or higher.
 
 ### Install
 

@@ -11,6 +11,9 @@ import {...} from "https://deno.land/x/nhttp@1.2.9/lib/jwt.ts";
 import {...} from "npm:nhttp-land@1.2.9/jwt";
 ```
 #### Node / Bun
+```bash
+npm i jwt-simple
+```
 ```ts
 import {...} from "nhttp-land/jwt";
 // or

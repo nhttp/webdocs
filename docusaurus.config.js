@@ -6,7 +6,6 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
   title: "NHttp",
   // themes: ['@docusaurus/theme-search-algolia'],
   tagline: "An Simple web-framework for Deno and Friends. so hot 🚀",
@@ -48,10 +47,14 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        appId: 'VUBYD7NZJV',
+        apiKey: '694ae9209d1f144bdf06458d65e9925e',
+        indexName: 'nhttp',
+      },
       colorMode: {
         defaultMode: "dark",
       },
