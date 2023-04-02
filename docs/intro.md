@@ -16,8 +16,8 @@ sidebar_position: 1
 
 ## Features
 
-- Crazy Fast.
-- Easy to use.
+- Focus on simple and easy to use.
+- Fast performance.
 - Cross runtime support (Deno, Node, Bun, etc).
 - Low overhead & True handlers (no caching anything).
 - Middleware support.
@@ -85,6 +85,17 @@ app.get("/cat", () => {
 
 app.listen(8000, () => {
   console.log("> Running on port 8000");
+});
+```
+
+> Return direcly supported =>
+> `Response | String | JSON | Number | ReadableStream | Uint8Array | Blob | null`
+
+Return directly support promise (async/await).
+
+```ts
+app.get("/cat", async () => {
+  return await Promise.resolve(new Blob(["cat"], { type: "text/plain" }));
 });
 ```
 

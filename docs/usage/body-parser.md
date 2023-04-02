@@ -28,10 +28,10 @@ const app = nhttp({
 ```js
 const app = nhttp({ 
   bodyParser: {
-    json: "1mb",       /* default 3mb */
-    urlencoded: "1mb", /* default 3mb */
-    raw: "1mb",        /* default 3mb */
-    multipart: "1mb"   /* default 100mb */
+    json: "1mb",       /* default unlimited */
+    urlencoded: "1mb", /* default unlimited */
+    raw: "1mb",        /* default unlimited */
+    multipart: "1mb"   /* default unlimited */
   } 
 });
 ```
