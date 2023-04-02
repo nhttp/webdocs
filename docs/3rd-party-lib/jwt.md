@@ -4,11 +4,11 @@ Simple jwt libs.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.9/lib/jwt.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.10/lib/jwt.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.2.9/jwt";
+import {...} from "npm:nhttp-land@1.2.10/jwt";
 ```
 #### Node / Bun
 ```bash
@@ -22,7 +22,7 @@ import {...} from "nhttp-land/jwt";
 ### Usage
 ```ts
 ...
-import jwt from "https://deno.land/x/nhttp@1.2.9/lib/jwt.ts";
+import jwt from "https://deno.land/x/nhttp@1.2.10/lib/jwt.ts";
 
 const app = nhttp();
 
@@ -34,9 +34,9 @@ app.get("/admin/home", jwt("myjwtsecret"), (rev) => {
 ```
 ### Example
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.9/mod.ts";
-import validate, { z } from "https://deno.land/x/nhttp@1.2.9/lib/zod-validator.ts";
-import jwt from "https://deno.land/x/nhttp@1.2.9/lib/jwt.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.10/mod.ts";
+import validate, { z } from "https://deno.land/x/nhttp@1.2.10/lib/zod-validator.ts";
+import jwt from "https://deno.land/x/nhttp@1.2.10/lib/jwt.ts";
 
 // key secret
 const JWT_SECRET = "myjwtsecret";
@@ -66,4 +66,21 @@ app.get("/admin/home", jwt(JWT_SECRET), (rev) => {
 app.listen(8000, (_err, info) => {
   console.log(`Running on port ${info.port}`);
 });
+```
+
+### With Routing Controller
+```js
+import { Jwt } from "https://deno.land/x/nhttp@1.2.10/lib/jwt.ts";
+
+@Controller("/admin")
+class AdminController {
+  ...
+  @Jwt("secret")
+  @Get("/home")
+  home(rev: RequestEvent) {
+    console.log("Payload =>", rev.auth);
+    return "Welcome Home";
+  }
+  ...
+}
 ```
