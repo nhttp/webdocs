@@ -3,7 +3,7 @@
 Lookup file. related to [Upload Middleware](https://nhttp.deno.dev/docs/usage/upload)
 
 ```js
-import { multipart, nhttp } from "https://deno.land/x/nhttp@1.2.10/mod.ts";
+import { multipart, nhttp } from "https://deno.land/x/nhttp@1.2.11/mod.ts";
 
 const app = nhttp();
 

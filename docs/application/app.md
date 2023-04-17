@@ -2,7 +2,7 @@
 Initial Application.
 
 ```js
-import nhttp from "https://deno.land/x/nhttp@1.2.10/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.11/mod.ts";
 
 const app = nhttp();
 
@@ -21,7 +21,5 @@ const app = nhttp(config);
 Config body-parser. default to true or auto parses body.
 ### parseQuery
 Custom parse query. default undefined.
-### flash
-Flash server `Deno`. default to false.
 ### stackError
 Send error stacks in response for default error handling. default to true.

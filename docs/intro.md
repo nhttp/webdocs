@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [![nhttp ci](https://github.com/nhttp/nhttp/workflows/ci/badge.svg)](https://github.com/nhttp/nhttp)
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
-[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.10%2Fmod.ts)](https://deno.land/x/nhttp)
+[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.11%2Fmod.ts)](https://deno.land/x/nhttp)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](http://makeapullrequest.com)
 ![deps badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
 ![cache badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fcache-size%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
@@ -28,26 +28,24 @@ sidebar_position: 1
 
 [See Examples](https://github.com/nhttp/nhttp/tree/master/examples)
 
-[See Benchmark](https://nhttp.deno.dev/benchmark)
-
 ## Installation
 
 ### deno.land
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.10/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.11/mod.ts";
 ```
 
 ### deno-npm
 
 ```ts
-import nhttp from "npm:nhttp-land@1.2.10";
+import nhttp from "npm:nhttp-land@1.2.11";
 ```
 
 ### nest.land
 
 ```ts
-import nhttp from "https://x.nest.land/nhttp@1.2.10/mod.ts";
+import nhttp from "https://x.nest.land/nhttp@1.2.11/mod.ts";
 ```
 
 ### npm/yarn
@@ -71,7 +69,7 @@ const nhttp = require("nhttp-land").default;
 ## Usage
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.10/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.11/mod.ts";
 
 const app = nhttp();
 
@@ -103,14 +101,6 @@ app.get("/cat", async () => {
 
 ```bash
 deno run -A myapp.ts
-```
-
-## Deno Flash
-
-> requires `--unstable` flag.
-
-```ts
-const app = nhttp({ flash: true });
 ```
 
 ## Middleware
@@ -203,8 +193,8 @@ export default app.module();
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.10/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.2.10/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.11/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.11/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (

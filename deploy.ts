@@ -1,18 +1,20 @@
-import nhttp, { Handler } from "https://deno.land/x/nhttp@1.2.10/mod.ts";
-import serveStatic from "https://deno.land/x/nhttp@1.2.10/lib/serve-static.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.11/mod.ts";
+import serveStatic from "https://deno.land/x/nhttp@1.2.11/lib/serve-static.ts";
 
-const assets = serveStatic("build", {
+const app = nhttp();
+
+app.use(serveStatic("build", {
   setHeaders({ response }) {
     response.setHeader("x-powered-by", "nhttp");
   },
-});
+}));
 
-const notFound: Handler = async ({ response }) => {
+app.on404(async ({ response }) => {
   response.type("html");
   return await Deno.readFile("build/404.html");
-};
+});
 
-nhttp()
-  .use(assets)
-  .on404(notFound)
-  .listen(8080);
+app.listen(8080, (err, info) => {
+  if (err) throw err;
+  console.log(`> Running on http://${info.hostname}:${info.port}`);
+});
