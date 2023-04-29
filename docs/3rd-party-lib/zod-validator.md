@@ -4,11 +4,11 @@ Validate body with zod.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.11/lib/zod-validator.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.13/lib/zod-validator.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.2.11/zod-validator";
+import {...} from "npm:nhttp-land@1.2.13/zod-validator";
 ```
 #### Node / Bun
 ```bash
@@ -22,8 +22,8 @@ import {...} from "nhttp-land/zod-validator";
 
 ### Usage
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.11/mod.ts";
-import validate, { z } from "https://deno.land/x/nhttp@1.2.11/lib/zod-validator.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.13/mod.ts";
+import validate, { z } from "https://deno.land/x/nhttp@1.2.13/lib/zod-validator.ts";
 
 const User = z.object({
   username: z.string(),
@@ -48,7 +48,7 @@ app.listen(8000, (_err, info) => {
 
 ### With Routing Controller
 ```ts
-import { Validate, z } from "https://deno.land/x/nhttp@1.2.11/lib/zod-validator.ts";
+import { Validate, z } from "https://deno.land/x/nhttp@1.2.13/lib/zod-validator.ts";
 
 const User = z.object({
   username: z.string(),
