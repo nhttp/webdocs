@@ -4,11 +4,11 @@ Simple jwt libs.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.13/lib/jwt.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.15/lib/jwt.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.2.13/jwt";
+import {...} from "npm:nhttp-land@1.2.15/jwt";
 ```
 #### Node / Bun
 ```bash
@@ -22,11 +22,11 @@ import {...} from "nhttp-land/jwt";
 ### Usage
 ```ts
 ...
-import jwt from "https://deno.land/x/nhttp@1.2.13/lib/jwt.ts";
+import jwt from "https://deno.land/x/nhttp@1.2.15/lib/jwt.ts";
 
 const app = nhttp();
 
-app.get("/admin/home", jwt("myjwtsecret"), (rev) => {
+app.get("/admin/home", jwt({ secret: "myjwtsecret" }), (rev) => {
   console.log("Payload => ", rev.auth);
   return rev.auth;
 });
@@ -34,9 +34,9 @@ app.get("/admin/home", jwt("myjwtsecret"), (rev) => {
 ```
 ### Example
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.13/mod.ts";
-import validate, { z } from "https://deno.land/x/nhttp@1.2.13/lib/zod-validator.ts";
-import jwt from "https://deno.land/x/nhttp@1.2.13/lib/jwt.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.15/mod.ts";
+import validate, { z } from "https://deno.land/x/nhttp@1.2.15/lib/zod-validator.ts";
+import jwt from "https://deno.land/x/nhttp@1.2.15/lib/jwt.ts";
 
 // key secret
 const JWT_SECRET = "myjwtsecret";
@@ -59,7 +59,7 @@ app.post("/login", validate(LoginSchema), (rev) => {
   return { token: jwt.encode(payload, JWT_SECRET) };
 });
 
-app.get("/admin/home", jwt(JWT_SECRET), (rev) => {
+app.get("/admin/home", jwt({ secret: JWT_SECRET }), (rev) => {
   return `Welcome ${rev.auth.user}`;
 });
 
@@ -70,12 +70,12 @@ app.listen(8000, (_err, info) => {
 
 ### With Routing Controller
 ```js
-import { Jwt } from "https://deno.land/x/nhttp@1.2.13/lib/jwt.ts";
+import { Jwt } from "https://deno.land/x/nhttp@1.2.15/lib/jwt.ts";
 
 @Controller("/admin")
 class AdminController {
   ...
-  @Jwt("secret")
+  @Jwt({ secret: "secret" })
   @Get("/home")
   home(rev: RequestEvent) {
     console.log("Payload =>", rev.auth);

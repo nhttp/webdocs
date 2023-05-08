@@ -6,18 +6,19 @@ sidebar_position: 1
 
 [![nhttp ci](https://github.com/nhttp/nhttp/workflows/ci/badge.svg)](https://github.com/nhttp/nhttp)
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
-[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.13%2Fmod.ts)](https://deno.land/x/nhttp)
+[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.15%2Fmod.ts)](https://deno.land/x/nhttp)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](http://makeapullrequest.com)
 ![deps badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
-![cache badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fcache-size%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
+[![minzip](https://img.shields.io/bundlephobia/minzip/nhttp-land)](https://deno.land/x/nhttp)
+[![min](https://img.shields.io/bundlephobia/min/nhttp-land)](https://deno.land/x/nhttp)
 [![codecov](https://codecov.io/gh/nhttp/nhttp/branch/master/graph/badge.svg?token=SJ2NZQ0ZJG)](https://codecov.io/gh/nhttp/nhttp)
 [![CodeFactor](https://www.codefactor.io/repository/github/nhttp/nhttp/badge/master)](https://www.codefactor.io/repository/github/nhttp/nhttp/overview/master)
-[![nest.land](https://nest.land/badge.svg)](https://nest.land/package/nhttp)
 
 ## Features
 
 - Focus on simple and easy to use.
-- Fast performance.
+- Fast Performance.
+  [One of the fastest Frameworks](https://github.com/denosaurs/bench#hello-bench).
 - Cross runtime support (Deno, Node, Bun, etc).
 - Low overhead & True handlers (no caching anything).
 - Middleware support.
@@ -33,19 +34,13 @@ sidebar_position: 1
 ### deno.land
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.13/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.15/mod.ts";
 ```
 
 ### deno-npm
 
 ```ts
-import nhttp from "npm:nhttp-land@1.2.13";
-```
-
-### nest.land
-
-```ts
-import nhttp from "https://x.nest.land/nhttp@1.2.13/mod.ts";
+import nhttp from "npm:nhttp-land@1.2.15";
 ```
 
 ### npm/yarn
@@ -69,7 +64,7 @@ const nhttp = require("nhttp-land").default;
 ## Usage
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.13/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.15/mod.ts";
 
 const app = nhttp();
 
@@ -93,7 +88,7 @@ Return directly support promise (async/await).
 
 ```ts
 app.get("/cat", async () => {
-  return await Promise.resolve(new Blob(["cat"], { type: "text/plain" }));
+  return await Promise.resolve("hello");
 });
 ```
 
@@ -101,6 +96,14 @@ app.get("/cat", async () => {
 
 ```bash
 deno run -A myapp.ts
+```
+
+## Deno Flash
+
+> requires `--unstable` flags.
+
+```ts
+const app = nhttp({ flash: true });
 ```
 
 ## Middleware
@@ -193,8 +196,8 @@ export default app.module();
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.13/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.2.13/mod.ts";
+import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.15/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.15/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -217,7 +220,6 @@ app.listen(8000, () => {
   console.log("> Running on port 8000");
 });
 ```
-
 ## License
 
 [MIT](https://github.com/nhttp/nhttp/blob/master/LICENSE)
