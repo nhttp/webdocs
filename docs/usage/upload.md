@@ -5,7 +5,7 @@ NHttp built in multipart by default. so, no need any library to handle upload.
 > Support Deno, Bun, Nodejs.
 
 ```js
-import { multipart, nhttp } from "https://deno.land/x/nhttp@1.2.15/mod.ts";
+import { multipart, nhttp } from "https://deno.land/x/nhttp@1.2.16/mod.ts";
 const app = nhttp();
 
 // handle upload multipart/form-data
@@ -44,6 +44,14 @@ multipart.upload({
   callback: (file) => {
     // change filename
     file.filename = Date.now() + file.name;
+  }
+});
+
+// storage
+multipart.upload({
+  name: "image", 
+  storage: async (file) => {
+    // my_code to save storage.
   }
 });
 
