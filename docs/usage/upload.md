@@ -5,7 +5,7 @@ NHttp built in multipart by default. so, no need any library to handle upload.
 > Support Deno, Bun, Nodejs.
 
 ```js
-import { multipart, nhttp } from "https://deno.land/x/nhttp@1.2.16/mod.ts";
+import { multipart, nhttp } from "https://deno.land/x/nhttp@1.2.18/mod.ts";
 const app = nhttp();
 
 // handle upload multipart/form-data
@@ -37,6 +37,9 @@ multipart.upload({ name: "image", accept: 'png|jpg' });
 
 // maxSize file
 multipart.upload({ name: "image", maxSize: '2 mb' });
+
+// disable upload
+multipart.upload({ name: "image", writeFile: false });
 
 // callback
 multipart.upload({

@@ -6,6 +6,8 @@ backup.txt
 .docusaurus
 .cache-loader
 
+/build
+
 dev.ts
 note.txt
 # Misc

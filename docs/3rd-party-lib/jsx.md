@@ -1,22 +1,31 @@
 # Jsx
+
 Simple jsx libs.
 
 ### Import
+
 #### Deno
+
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.2.16/lib/jsx.ts";
+import {...} from "https://deno.land/x/nhttp@1.2.18/lib/jsx.ts";
 ```
+
 #### Deno npm
+
 ```ts
-import {...} from "npm:nhttp-land@1.2.16/jsx";
+import {...} from "npm:nhttp-land@1.2.18/jsx";
 ```
+
 #### Node / Bun
+
 ```ts
 import {...} from "nhttp-land/jsx";
 // or
 // const {...} = require("nhttp-land/jsx");
 ```
+
 ### Config
+
 ```json
 {
   "jsx": "react",
@@ -24,18 +33,24 @@ import {...} from "nhttp-land/jsx";
   "jsxFragmentFactory": "n.Fragment"
 }
 ```
+
 ### Or inline file (tsx)
+
 ```ts
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 ```
+
 ### Usage
+
 ```jsx
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.16/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.2.16/mod.ts";
+import { n, FC } from "https://deno.land/x/nhttp@1.2.18/lib/jsx.ts";
+import { renderToHtml } from "https://deno.land/x/nhttp@1.2.18/lib/jsx/render.ts";
+import Helmet from "https://deno.land/x/nhttp@1.2.18/lib/jsx/helmet.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.18/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -60,6 +75,7 @@ app.listen(8000, () => {
 ```
 
 ### Expected in browser
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -75,34 +91,77 @@ app.listen(8000, () => {
 ```
 
 ### Using middleware
+
 ```jsx
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, Helmet, renderToHtml, FC } from "https://deno.land/x/nhttp@1.2.16/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.2.16/mod.ts";
-
-const Home: FC<{ title: string }> = (props) => {
-  return (
-    <>
-      <Helmet>
-        <title>{props.title}</title>
-      </Helmet>
-      <h1>Home Page</h1>
-    </>
-  );
-};
+import { n, FC } from "https://deno.land/x/nhttp@1.2.18/lib/jsx.ts";
+import { renderToHtml } from "https://deno.land/x/nhttp@1.2.18/lib/jsx/render.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.18/mod.ts";
 
 const app = nhttp();
 
 app.use((rev, next) => {
   rev.jsx = (elem: JSX.Element) => {
-    rev.response.type("text/html; charset=utf-8").send(renderToHtml(elem));
+    return rev.response.html(renderToHtml(elem));
   }
   return next();
 });
 
-app.get("/", ({ jsx }) => jsx(<Home title="welcome jsx" />));
+app.get("/", ({ jsx }) => jsx(<h1>foobar</h1>));
+
+app.listen(8000, () => {
+  console.log("> Running on port 8000");
+});
+```
+
+### Using Twind
+
+```jsx
+/** @jsx n */
+/** @jsxFrag n.Fragment */
+
+import { FC, n } from "https://deno.land/x/nhttp@1.2.18/lib/jsx.ts";
+import { renderToHtml } from "https://deno.land/x/nhttp@1.2.18/lib/jsx/render.ts";
+import useTwind from "https://deno.land/x/nhttp@1.2.18/lib/jsx/twind.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.18/mod.ts";
+
+useTwind();
+
+const app = nhttp();
+
+app.engine(renderToHtml);
+
+app.get("/", () => <h1 className="mt-20">hello twind</h1>);
+
+app.listen(8000, () => {
+  console.log("> Running on port 8000");
+});
+```
+
+### Using React
+
+```jsx
+import React from "https://esm.sh/react@18.2.0";
+import {
+  options,
+  renderToHtml,
+} from "https://deno.land/x/nhttp@1.2.18/lib/jsx/render.ts";
+import { renderToString } from "https://esm.sh/react-dom@18.2.0/server";
+import Helmet from "https://deno.land/x/nhttp@1.2.18/lib/jsx/helmet.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.18/mod.ts";
+
+options.onRenderElement = (elem) => {
+  Helmet.render = renderToString;
+  return Helmet.render(elem);
+};
+
+const app = nhttp();
+
+app.engine(renderToHtml);
+
+app.get("/", () => <h1>hello react</h1>);
 
 app.listen(8000, () => {
   console.log("> Running on port 8000");

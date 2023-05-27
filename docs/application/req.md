@@ -4,7 +4,7 @@ Simple create mock-request. idealy for testing or run nhttp in the browser.
 
 ### Usage
 ```js
-import nhttp from "https://deno.land/x/nhttp@1.2.16/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.18/mod.ts";
 
 const app = nhttp();
 
