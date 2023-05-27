@@ -16,11 +16,8 @@ jobs:
       - name: Install node
         uses: actions/setup-node@v3
 
-      - name: Setup Package
-        run: npm install
-
       - name: Build docusaurus
-        run: npm run build
+        run: npx docusaurus build
 
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
