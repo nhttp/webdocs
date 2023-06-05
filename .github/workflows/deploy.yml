@@ -17,10 +17,11 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Setup Package
-        run: npm install
+        run: npm ci
 
       - name: Build docusaurus
         run: | 
+          npm run clear
           npm run build
           rm -rf node_modules
 
