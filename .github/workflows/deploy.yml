@@ -17,10 +17,12 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Setup Package
-        run: npm ci
+        run: npm install
 
       - name: Build docusaurus
-        run: npm run build
+        run: | 
+          npm run build
+          rm -rf node_modules
 
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
