@@ -4,10 +4,14 @@ import serveStatic from "https://deno.land/x/nhttp@1.2.20/lib/serve-static.ts";
 const app = nhttp();
 
 app.use(serveStatic("build", {
-  setHeaders({ response }) {
+  setHeaders({ response }, path) {
+    let cc = "public, max-age=604800, immutable";
+    if (path.endsWith(".html")) cc = "no-cache";
+    response.setHeader("cache-control", cc);
     response.setHeader("x-powered-by", "nhttp");
   },
-  spa: true
+  etag: false,
+  spa: true,
 }));
 
 app.listen(8080, (err, info) => {
