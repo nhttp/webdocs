@@ -1,5 +1,5 @@
-import nhttp from "https://deno.land/x/nhttp@1.2.21/mod.ts";
-import serveStatic from "https://deno.land/x/nhttp@1.2.21/lib/serve-static.ts";
+import nhttp from "https://deno.land/x/nhttp@1.2.23/mod.ts";
+import serveStatic from "https://deno.land/x/nhttp@1.2.23/lib/serve-static.ts";
 
 const app = nhttp();
 
