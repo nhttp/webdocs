@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [![nhttp ci](https://github.com/nhttp/nhttp/workflows/ci/badge.svg)](https://github.com/nhttp/nhttp)
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
-[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.2.24%2Fmod.ts)](https://deno.land/x/nhttp)
+[![deno.land](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fnhttp@1.3.0%2Fmod.ts)](https://deno.land/x/nhttp)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](http://makeapullrequest.com)
 ![deps badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fnhttp%2Fmod.ts)
 [![minzip](https://img.shields.io/bundlephobia/minzip/nhttp-land)](https://deno.land/x/nhttp)
@@ -29,18 +29,20 @@ sidebar_position: 1
 
 [See Examples](https://github.com/nhttp/nhttp/tree/master/examples)
 
+> starting v1.3.0, requires Deno 1.35 or higher.
+
 ## Installation
 
 ### deno.land
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.24/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.0/mod.ts";
 ```
 
 ### deno-npm
 
 ```ts
-import nhttp from "npm:nhttp-land@1.2.24";
+import nhttp from "npm:nhttp-land@1.3.0";
 ```
 
 ### npm/yarn
@@ -64,7 +66,7 @@ const nhttp = require("nhttp-land").default;
 ## Usage
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.2.24/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.0/mod.ts";
 
 const app = nhttp();
 
@@ -220,10 +222,10 @@ export default app.module();
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, FC } from "https://deno.land/x/nhttp@1.2.24/lib/jsx.ts";
-import { renderToHtml } from "https://deno.land/x/nhttp@1.2.24/lib/jsx/render.ts";
-import Helmet from "https://deno.land/x/nhttp@1.2.24/lib/jsx/helmet.ts";
-import nhttp from "https://deno.land/x/nhttp@1.2.24/mod.ts";
+import { n, FC } from "https://deno.land/x/nhttp@1.3.0/lib/jsx.ts";
+import { renderToHtml } from "https://deno.land/x/nhttp@1.3.0/lib/jsx/render.ts";
+import Helmet from "https://deno.land/x/nhttp@1.3.0/lib/jsx/helmet.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.0/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -246,6 +248,7 @@ app.listen(8000, () => {
   console.log("> Running on port 8000");
 });
 ```
+
 ## License
 
 [MIT](https://github.com/nhttp/nhttp/blob/master/LICENSE)

@@ -99,6 +99,12 @@ response.send({ name: "john" });
 response.json({ name: "john" });
 ```
 
+### response.html
+
+```js
+response.html("<h1>Hello Worlds</h1>");
+```
+
 ### response.redirect
 
 ```js
