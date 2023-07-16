@@ -5,6 +5,10 @@ const app = nhttp();
 
 app.get("/404", (rev) => {
   rev.response.type("html");
+  const stat = Deno.statSync("build/404.html");
+  if (stat.isFile) {
+    console.log("file");
+  }
   return Deno.readFileSync("build/404.html");
 })
 
