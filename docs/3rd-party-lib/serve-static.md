@@ -4,11 +4,11 @@ Serving assets.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.0/lib/serve-static.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.1/lib/serve-static.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.3.0/serve-static";
+import {...} from "npm:nhttp-land@1.3.1/serve-static";
 ```
 #### Node / Bun
 ```ts
@@ -19,12 +19,26 @@ import {...} from "nhttp-land/serve-static";
 
 ### Usage
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.0/mod.ts";
-import serveStatic from "https://deno.land/x/nhttp@1.3.0/lib/serve-static.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.1/mod.ts";
+import serveStatic from "https://deno.land/x/nhttp@1.3.1/lib/serve-static.ts";
 
 const app = nhttp();
 
-app.use("/assets", serveStatic("mydir", /* options */));
+app.use(serveStatic("mydir", /* options */));
+
+// prefix
+app.use(serveStatic("mydir", { prefix: "/assets" }));
+// or
+// app.use("/assets", serveStatic("mydir"));
+
+// etag default false
+app.use(serveStatic("mydir", { etag: true }));
+
+// redirect default true
+app.use(serveStatic("mydir", { redirect: false }));
+
+// single page apps (spa) default false
+app.use(serveStatic("mydir", { spa: true }));
 
 app.listen(8000);
 ```

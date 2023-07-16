@@ -8,7 +8,7 @@ A router like application, you can add HTTP method (get, put, post, or other) to
 it. For example:
 
 ```js
-import nhttp from "https://deno.land/x/nhttp@1.3.0/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.1/mod.ts";
 
 const app = nhttp();
 

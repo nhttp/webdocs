@@ -1,16 +1,15 @@
-import nhttp from "https://deno.land/x/nhttp@1.3.0/mod.ts";
-import serveStatic from "https://deno.land/x/nhttp@1.3.0/lib/serve-static.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.1/mod.ts";
+import serveStatic from "https://deno.land/x/nhttp@1.3.1/lib/serve-static.ts";
 
 const app = nhttp();
 
 app.use(serveStatic("build", {
   setHeaders({ response }, path) {
-    let cc = "public, max-age=604800, immutable";
-    if (path.endsWith(".html")) cc = "no-cache";
-    response.setHeader("cache-control", cc);
+    if (!path.endsWith(".html")) {
+      response.setHeader("cache-control", "public, max-age=604800, immutable");
+    }
     response.setHeader("x-powered-by", "nhttp");
   },
-  etag: false,
   spa: true,
 }));
 

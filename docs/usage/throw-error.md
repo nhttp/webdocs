@@ -3,7 +3,7 @@
 Simple throwing error for situation logic.
 
 ```js
-import { HttpError, nhttp } from "https://deno.land/x/nhttp@1.3.0/mod.ts";
+import { HttpError, nhttp } from "https://deno.land/x/nhttp@1.3.1/mod.ts";
 
 const app = nhttp();
 
