@@ -7,13 +7,13 @@ Simple jsx libs.
 #### Deno
 
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.2/lib/jsx.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.3/lib/jsx.ts";
 ```
 
 #### Deno npm
 
 ```ts
-import {...} from "npm:nhttp-land@1.3.2/jsx";
+import {...} from "npm:nhttp-land@1.3.3/jsx";
 ```
 
 #### Node / Bun
@@ -47,10 +47,8 @@ import {...} from "nhttp-land/jsx";
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, FC } from "https://deno.land/x/nhttp@1.3.2/lib/jsx.ts";
-import { renderToHtml } from "https://deno.land/x/nhttp@1.3.2/lib/jsx/render.ts";
-import Helmet from "https://deno.land/x/nhttp@1.3.2/lib/jsx/helmet.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.2/mod.ts";
+import { n, FC, renderToHtml, Helmet } from "https://deno.land/x/nhttp@1.3.3/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.3/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -96,9 +94,8 @@ app.listen(8000, () => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, FC } from "https://deno.land/x/nhttp@1.3.2/lib/jsx.ts";
-import { renderToHtml } from "https://deno.land/x/nhttp@1.3.2/lib/jsx/render.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.2/mod.ts";
+import { n, FC, renderToHtml } from "https://deno.land/x/nhttp@1.3.3/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.3/mod.ts";
 
 const app = nhttp();
 
@@ -122,10 +119,9 @@ app.listen(8000, () => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { FC, n } from "https://deno.land/x/nhttp@1.3.2/lib/jsx.ts";
-import { renderToHtml } from "https://deno.land/x/nhttp@1.3.2/lib/jsx/render.ts";
-import useTwind from "https://deno.land/x/nhttp@1.3.2/lib/jsx/twind.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.2/mod.ts";
+import { FC, n, renderToHtml } from "https://deno.land/x/nhttp@1.3.3/lib/jsx.ts";
+import useTwind from "https://deno.land/x/nhttp@1.3.3/lib/jsx/twind.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.3/mod.ts";
 
 useTwind();
 
@@ -147,10 +143,10 @@ import React from "https://esm.sh/react@18.2.0";
 import {
   options,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.2/lib/jsx/render.ts";
+  Helmet
+} from "https://deno.land/x/nhttp@1.3.3/lib/jsx.ts";
 import { renderToString } from "https://esm.sh/react-dom@18.2.0/server";
-import Helmet from "https://deno.land/x/nhttp@1.3.2/lib/jsx/helmet.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.2/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.3/mod.ts";
 
 options.onRenderElement = (elem) => {
   Helmet.render = renderToString;
