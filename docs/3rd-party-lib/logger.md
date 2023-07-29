@@ -4,11 +4,11 @@ Simple http-logger.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.4/lib/logger.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.6/lib/logger.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.3.4/logger";
+import {...} from "npm:nhttp-land@1.3.6/logger";
 ```
 #### Node / Bun
 ```ts
@@ -19,8 +19,8 @@ import {...} from "nhttp-land/logger";
 
 ### Usage
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.4/mod.ts";
-import logger from "https://deno.land/x/nhttp@1.3.4/lib/logger.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.6/mod.ts";
+import logger from "https://deno.land/x/nhttp@1.3.6/lib/logger.ts";
 
 const app = nhttp();
 
