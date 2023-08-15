@@ -8,11 +8,11 @@ Make Controller as Router with simple Decorators.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.6/lib/controller.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.7/lib/controller.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.3.6/controller";
+import {...} from "npm:nhttp-land@1.3.7/controller";
 ```
 #### Node / Bun
 ```ts
@@ -40,8 +40,8 @@ import {...} from "nhttp-land/controller";
 
 ### Usage
 ```ts
-import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.3.6/mod.ts";
-import { Get, Controller } from "https://deno.land/x/nhttp@1.3.6/lib/controller.ts";
+import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.3.7/mod.ts";
+import { Get, Controller } from "https://deno.land/x/nhttp@1.3.7/lib/controller.ts";
 
 @Controller("/hello")
 class HelloController {
@@ -56,9 +56,9 @@ class HelloController {
 
 const app = nhttp();
 
-app.use("/api/v1", new UserController());
+app.use("/api/v1", new HelloController());
 // or multi controllers
-// app.use("/api/v1", [new UserController(), new HomeController()]);
+// app.use("/api/v1", [new HelloController(), new HomeController()]);
 
 app.listen(8000);
 ```
@@ -68,12 +68,12 @@ Controller decorators.
 ```ts
 @Controller()
 // or
-@Controller("/user")
+@Controller("/hello")
 // or
-@Controller("/user", ...middlewares);
+@Controller("/hello", ...middlewares);
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {...}
 ```
 
@@ -83,14 +83,14 @@ Method Decorators. `Get | Post | Delete` and more methods.
 @[Method](path_string);
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
-  // GET/user/123
+  // GET/hello/123
   @Get("/:id")
   findById(rev: RequestEvent) {...}
 
-  // POST/user
+  // POST/hello
   @Post("/")
   create(rev: RequestEvent) {...}
 }
@@ -110,7 +110,7 @@ class UserMiddleware {
 }
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
   @Wares(UserMiddleware)
@@ -128,7 +128,7 @@ Upload decorators. related to [Upload Middleware](https://nhttp.deno.dev/docs/us
 @Upload(config);
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
   @Upload({ name: "image" })
@@ -146,7 +146,7 @@ Status decorators. set statusCode in decorators.
 @Status(code);
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
   @Status(201)
@@ -164,7 +164,7 @@ Header decorators. set Header in decorators.
 @Header(obj);
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
   @Header("name", "john")
@@ -181,7 +181,7 @@ Type decorators. set Content-Type in decorators.
 @Type(contentType);
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
   @Type("html")
@@ -199,7 +199,7 @@ View decorators. set View in decorators. requires `app.engine` configs.
 @View(name);
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
   @View("index")
@@ -224,7 +224,7 @@ Jsx decorators. requires `app.engine` to React / Preact.
 @Jsx();
 ```
 ```ts
-@Controller("/user");
+@Controller("/hello");
 class HelloController {
 
   @Jsx()
