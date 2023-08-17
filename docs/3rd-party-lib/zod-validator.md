@@ -41,6 +41,24 @@ app.post("/", validate(User), (rev) => {
   return rev.body.user_info;
 });
 
+const userId = z.object({
+  userId: z.number(),
+});
+
+// validate path params
+app.get("/users/:userId", validate(userId, 'path'), (rev) => {
+  return rev.body.user_info;
+});
+
+const category = z.object({
+  category: z.string(),
+});
+
+// validate query params
+app.get("/posts/:postId?category=development", validate(category, 'query'), (rev) => {
+  return rev.body.user_info;
+});
+
 app.listen(8000, (_err, info) => {
   console.log(`Running on port ${info.port}`);
 });
