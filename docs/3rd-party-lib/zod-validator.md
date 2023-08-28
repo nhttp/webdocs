@@ -46,8 +46,8 @@ const userId = z.object({
 });
 
 // validate path params
-app.get("/users/:userId", validate(userId, 'path'), (rev) => {
-  return rev.body.user_info;
+app.get("/users/:userId", validate(userId, "params"), (rev) => {
+  return rev.params;
 });
 
 const category = z.object({
@@ -55,8 +55,8 @@ const category = z.object({
 });
 
 // validate query params
-app.get("/posts/:postId?category=development", validate(category, 'query'), (rev) => {
-  return rev.body.user_info;
+app.get("/posts/:postId", validate(category, "query"), (rev) => {
+  return rev.query;
 });
 
 app.listen(8000, (_err, info) => {
