@@ -36,7 +36,7 @@ sidebar_position: 1
 ### Deno
 
 ```bash
-deno run -A npm:create-nhttp@latest
+deno run -Ar npm:create-nhttp
 ```
 
 ### Npm
