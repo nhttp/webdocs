@@ -31,7 +31,21 @@ sidebar_position: 1
 
 > starting v1.3.9, requires Deno 1.35 or higher.
 
-## Installation
+## CLI
+
+### Deno
+
+```bash
+deno run -A npm:create-nhttp@latest
+```
+
+### Npm
+
+```bash
+npm create nhttp@latest
+```
+
+## Manual Installation
 
 ### deno.land
 
@@ -63,7 +77,7 @@ import nhttp from "nhttp-land";
 const nhttp = require("nhttp-land").default;
 ```
 
-## Usage
+## Simple Usage
 
 ```ts
 import nhttp from "https://deno.land/x/nhttp@1.3.9/mod.ts";
@@ -100,16 +114,10 @@ app.get("/cat", async () => {
 deno run -A myapp.ts
 ```
 
-## Deno Flash
-
-> requires `--unstable` flags.
-
-```ts
-const app = nhttp({ flash: true });
-```
-
 ## Middleware
+All Route built-in middleware.
 
+### Example 1
 ```ts
 const app = nhttp();
 
@@ -121,8 +129,7 @@ app.use((rev, next) => {
 app.get("/", ({ foo }) => foo);
 ```
 
-All Route built-in middleware.
-
+### Example 2
 ```ts
 const app = nhttp();
 
