@@ -4,11 +4,11 @@ File System Router A`la [Nextjs](https://nextjs.org/).
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.10/lib/file-router.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.11/lib/file-router.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.3.10/file-router";
+import {...} from "npm:nhttp-land@1.3.11/file-router";
 ```
 #### Node / Bun
 ```ts
@@ -20,7 +20,7 @@ import {...} from "nhttp-land/file-router";
 ### Usage
 ```ts
 // routes/index.ts
-import { RequestEvent } from "https://deno.land/x/nhttp@1.3.10/mod.ts";
+import { RequestEvent } from "https://deno.land/x/nhttp@1.3.11/mod.ts";
 
 export function GET(rev: RequestEvent) {
   return "Hello, Home Index";
@@ -28,8 +28,8 @@ export function GET(rev: RequestEvent) {
 ```
 ```ts
 // app.ts
-import { nhttp } from "https://deno.land/x/nhttp@1.3.10/mod.ts";
-import { generateRoute } from "https://deno.land/x/nhttp@1.3.10/lib/file-router.ts";
+import { nhttp } from "https://deno.land/x/nhttp@1.3.11/mod.ts";
+import { generateRoute } from "https://deno.land/x/nhttp@1.3.11/lib/file-router.ts";
 
 const app = nhttp();
 
@@ -41,7 +41,7 @@ app.listen(8000);
 #### Lookup route from dir
 
 ```ts
-import { getRouteFromDir } from "https://deno.land/x/nhttp@1.3.10/lib/file-router.ts";
+import { getRouteFromDir } from "https://deno.land/x/nhttp@1.3.11/lib/file-router.ts";
 
 const route = await getRouteFromDir("my_dir");
 
