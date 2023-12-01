@@ -41,6 +41,8 @@ Shorthand for Content-Type headers.
 response.type("html");
 // or
 response.type("text/html");
+// or
+response.type("html", "utf-8");
 ```
 
 ### response.attachment

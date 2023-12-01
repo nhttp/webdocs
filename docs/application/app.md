@@ -2,7 +2,7 @@
 Initial Application.
 
 ```js
-import nhttp from "https://deno.land/x/nhttp@1.3.13/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.14/mod.ts";
 
 const app = nhttp();
 
