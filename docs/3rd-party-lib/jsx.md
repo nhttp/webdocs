@@ -7,13 +7,13 @@ Simple jsx libs.
 #### Deno
 
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.14/lib/jsx.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.15/lib/jsx.ts";
 ```
 
 #### Deno npm
 
 ```ts
-import {...} from "npm:nhttp-land@1.3.14/jsx";
+import {...} from "npm:nhttp-land@1.3.15/jsx";
 ```
 
 #### Node / Bun
@@ -24,21 +24,53 @@ import {...} from "nhttp-land/jsx";
 // const {...} = require("nhttp-land/jsx");
 ```
 
-### Config
+### Inline file (.tsx)
+
+```tsx
+/** @jsx n */
+/** @jsxFrag n.Fragment */
+
+import { n } from "https://deno.land/x/nhttp@1.3.15/lib/jsx.ts";
+
+const Foo = () => <span>foo</span>;
+
+console.log(<Foo />);
+```
+
+### Config Automatic
+
+#### Transform react-jsx
 
 ```json
+// deno.json
 {
-  "jsx": "react",
-  "jsxFactory": "n",
-  "jsxFragmentFactory": "n.Fragment"
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "nhttp-jsx"
+  },
+  "imports": {
+    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.15/lib/jsx/jsx-runtime.ts"
+  }
 }
 ```
 
-### Or inline file (tsx)
+#### Transform Precompile
 
-```ts
-/** @jsx n */
-/** @jsxFrag n.Fragment */
+Support for jsx-transform `precompile`. [Deno](https://deno.com/) has claimed 7
+~ 20x faster. ref =>
+[fastest jsx transform](https://deno.com/blog/v1.38#fastest-jsx-transform)
+
+```json
+// deno.json
+{
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "nhttp-jsx"
+  },
+  "imports": {
+    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.15/lib/jsx/jsx-runtime.ts"
+  }
+}
 ```
 
 ### Usage
@@ -47,8 +79,8 @@ import {...} from "nhttp-land/jsx";
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, FC, renderToHtml, Helmet } from "https://deno.land/x/nhttp@1.3.14/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.14/mod.ts";
+import { n, FC, renderToHtml, Helmet } from "https://deno.land/x/nhttp@1.3.15/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.15/mod.ts";
 
 const Home: FC<{ title: string }> = (props) => {
   return (
@@ -94,8 +126,8 @@ app.listen(8000, () => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { n, FC, renderToHtml } from "https://deno.land/x/nhttp@1.3.14/lib/jsx.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.14/mod.ts";
+import { n, FC, renderToHtml } from "https://deno.land/x/nhttp@1.3.15/lib/jsx.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.15/mod.ts";
 
 const app = nhttp();
 
@@ -119,9 +151,13 @@ app.listen(8000, () => {
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import { FC, n, renderToHtml } from "https://deno.land/x/nhttp@1.3.14/lib/jsx.ts";
-import useTwind from "https://deno.land/x/nhttp@1.3.14/lib/jsx/twind.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.14/mod.ts";
+import {
+  FC,
+  n,
+  renderToHtml,
+} from "https://deno.land/x/nhttp@1.3.15/lib/jsx.ts";
+import useTwind from "https://deno.land/x/nhttp@1.3.15/lib/jsx/twind.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.15/mod.ts";
 
 useTwind();
 
@@ -143,21 +179,19 @@ import React from "https://esm.sh/react@18.2.0";
 import {
   options,
   renderToHtml,
-  Helmet
-} from "https://deno.land/x/nhttp@1.3.14/lib/jsx.ts";
+} from "https://deno.land/x/nhttp@1.3.15/lib/jsx.ts";
 import { renderToString } from "https://esm.sh/react-dom@18.2.0/server";
-import nhttp from "https://deno.land/x/nhttp@1.3.14/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.15/mod.ts";
 
 options.onRenderElement = (elem) => {
-  Helmet.render = renderToString;
-  return Helmet.render(elem);
+  return renderToString(elem);
 };
 
 const app = nhttp();
 
 app.engine(renderToHtml);
 
-app.get("/", () => <h1>hello react</h1>);
+app.get("/", () => <h1>Hello From React</h1>);
 
 app.listen(8000, () => {
   console.log("> Running on port 8000");
