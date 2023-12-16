@@ -7,13 +7,13 @@ Cross Site Request Forgery (CSRF) libs.
 #### Deno
 
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.15/lib/csrf.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.17/lib/csrf.ts";
 ```
 
 #### Deno npm
 
 ```ts
-import {...} from "npm:nhttp-land@1.3.15/csrf";
+import {...} from "npm:nhttp-land@1.3.17/csrf";
 ```
 
 #### Node / Bun
@@ -27,8 +27,8 @@ import {...} from "nhttp-land/csrf";
 ### Usage
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.15/mod.ts";
-import csrf from "https://deno.land/x/nhttp@1.3.15/lib/csrf.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.17/mod.ts";
+import csrf from "https://deno.land/x/nhttp@1.3.17/lib/csrf.ts";
 
 const MyForm: FC<{ csrf: string }> = (props) => {
   return (
