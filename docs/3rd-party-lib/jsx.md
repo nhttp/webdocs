@@ -7,13 +7,13 @@ Simple jsx libs.
 #### Deno
 
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 ```
 
 #### Deno npm
 
 ```ts
-import {...} from "npm:nhttp-land@1.3.17/jsx";
+import {...} from "npm:nhttp-land@1.3.18/jsx";
 ```
 
 #### Node / Bun
@@ -30,13 +30,13 @@ import {...} from "nhttp-land/jsx";
 /** @jsx n */
 /** @jsxFrag n.Fragment */
 
-import nhttp from "https://deno.land/x/nhttp@1.3.17/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.18/mod.ts";
 import {
   type FC,
   Helmet,
   n,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+} from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 // support for AsyncComponent
 const Fetcher: FC = async () => {
@@ -86,7 +86,7 @@ app.listen(8000, () => {
     "jsxImportSource": "nhttp-jsx"
   },
   "imports": {
-    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.17/lib/jsx/jsx-runtime.ts"
+    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.18/lib/jsx/jsx-runtime.ts"
   }
 }
 ```
@@ -104,7 +104,7 @@ app.listen(8000, () => {
     "jsxImportSource": "nhttp-jsx"
   },
   "imports": {
-    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.17/lib/jsx/jsx-runtime.ts"
+    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.18/lib/jsx/jsx-runtime.ts"
   }
 }
 ```
@@ -116,7 +116,7 @@ app.listen(8000, () => {
 use requestEvent.
 
 ```tsx
-import { useRequestEvent } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useRequestEvent } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const Home: FC = () => {
   const rev = useRequestEvent();
@@ -130,7 +130,7 @@ const Home: FC = () => {
 use parameter from router. e.g. `/user/:name`.
 
 ```tsx
-import { useParams } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useParams } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const User: FC = () => {
   const params = useParams<{ name: string }>();
@@ -144,7 +144,7 @@ const User: FC = () => {
 use query parameter from url. e.g. `/user?name=john`.
 
 ```tsx
-import { useQuery } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useQuery } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const User: FC = () => {
   const query = useQuery<{ name: string }>();
@@ -158,7 +158,7 @@ const User: FC = () => {
 use request body.
 
 ```tsx
-import { useBody } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useBody } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const User: FC = async () => {
   const user = useBody<{ name: string }>();
@@ -175,7 +175,7 @@ const User: FC = async () => {
 use http_response.
 
 ```tsx
-import { useResponse } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useResponse } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const User: FC = () => {
   const res = useResponse();
@@ -191,7 +191,7 @@ const User: FC = () => {
 minimal for simple client interactive.
 
 ```tsx
-import { useScript } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useScript } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const Counter: FC = () => {
   const state = { count: 0 };
@@ -226,7 +226,7 @@ const Counter: FC = () => {
 generate unique id.
 
 ```tsx
-import { useId } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useId } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const User: FC = () => {
   const title_id = useId();
@@ -246,7 +246,7 @@ const User: FC = () => {
 add style directly to the markup.
 
 ```tsx
-import { useStyle } from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+import { useStyle } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const User: FC = () => {
   useStyle({
@@ -275,7 +275,7 @@ Add context provider.
 import {
   createContext,
   useContext,
-} from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+} from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
 const FooContext = createContext();
 
@@ -293,8 +293,34 @@ app.get("/foo", () => {
   );
 });
 ```
+### With Htmx
+```tsx
+/** @jsx n */
+/** @jsxFrag n.Fragment */
+import nhttp from "https://deno.land/x/nhttp@1.3.18/mod.ts";
+import { n, htmx, renderToHtml } from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 
-### With Twind
+const app = nhttp();
+
+app.engine(renderToHtml);
+
+app.use(htmx());
+
+app.get("/", () => {
+  return (
+    <button hx-post="/clicked" hx-swap="outerHTML">
+      Click Me
+    </button>
+  );
+});
+
+app.post("/clicked", () => {
+  return <span>It's Me</span>;
+});
+
+app.listen(8000);
+```
+### With Twind Server
 
 ```jsx
 /** @jsx n */
@@ -304,11 +330,11 @@ import {
   FC,
   n,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
-import useTwind from "https://deno.land/x/nhttp@1.3.17/lib/jsx/twind.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.17/mod.ts";
+} from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
+import { useTwindServer } from "https://deno.land/x/nhttp@1.3.18/lib/jsx/twind-server.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.18/mod.ts";
 
-useTwind();
+useTwindServer();
 
 const app = nhttp();
 
@@ -329,9 +355,9 @@ import {
   Helmet,
   options,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+} from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 import { renderToString } from "https://esm.sh/react-dom/server";
-import nhttp from "https://deno.land/x/nhttp@1.3.17/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.18/mod.ts";
 
 options.onRenderElement = (elem) => {
   return renderToString(elem);
@@ -368,9 +394,9 @@ import {
   Helmet,
   options,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.17/lib/jsx.ts";
+} from "https://deno.land/x/nhttp@1.3.18/lib/jsx.ts";
 import { renderToString } from "https://esm.sh/preact-render-to-string";
-import nhttp from "https://deno.land/x/nhttp@1.3.17/mod.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.18/mod.ts";
 
 options.onRenderElement = (elem) => {
   return renderToString(elem);
