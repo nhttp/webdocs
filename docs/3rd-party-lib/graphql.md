@@ -4,11 +4,11 @@ Handle graphql with [yoga](https://github.com/dotansimha/graphql-yoga).
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.18/lib/yoga.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.19/lib/yoga.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.3.18/yoga";
+import {...} from "npm:nhttp-land@1.3.19/yoga";
 ```
 #### Node / Bun
 ```ts
@@ -19,8 +19,8 @@ import {...} from "nhttp-land/yoga";
 
 ### Usage
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.18/mod.ts";
-import yogaHandler from "https://deno.land/x/nhttp@1.3.18/lib/yoga.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.19/mod.ts";
+import yogaHandler from "https://deno.land/x/nhttp@1.3.19/lib/yoga.ts";
 import { createSchema, createYoga } from "npm:graphql-yoga";
 
 const yoga = createYoga({
