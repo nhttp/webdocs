@@ -27,3 +27,10 @@ app.get("/hello", (rev) => {
   // => foobar
 });
 ```
+
+### Multi Method
+```ts
+app.add(["GET", "POST"], "/hello", () => {
+  return "hello";
+});
+```

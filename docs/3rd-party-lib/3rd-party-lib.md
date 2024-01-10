@@ -6,10 +6,10 @@ Like `std-libs` for NHttp.
 
 ```ts
 // Deno
-import {...} from "https://deno.land/x/nhttp@1.3.19/lib/my-libs.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.20/lib/my-libs.ts";
 
 // Deno NPM
-import {...} from "npm:nhttp-land@1.3.19/my-libs";
+import {...} from "npm:nhttp-land@1.3.20/my-libs";
 
 // Node or Bun
 import {...} from "nhttp-land/my-libs";
