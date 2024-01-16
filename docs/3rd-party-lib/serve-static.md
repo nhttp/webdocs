@@ -7,13 +7,13 @@ Serving assets.
 #### Deno
 
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.21/lib/serve-static.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.22/lib/serve-static.ts";
 ```
 
 #### Deno npm
 
 ```ts
-import {...} from "npm:nhttp-land@1.3.21/serve-static";
+import {...} from "npm:nhttp-land@1.3.22/serve-static";
 ```
 
 #### Node / Bun
@@ -27,8 +27,8 @@ import {...} from "nhttp-land/serve-static";
 ### Usage
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.21/mod.ts";
-import serveStatic from "https://deno.land/x/nhttp@1.3.21/lib/serve-static.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.22/mod.ts";
+import serveStatic from "https://deno.land/x/nhttp@1.3.22/lib/serve-static.ts";
 
 const app = nhttp();
 
@@ -54,8 +54,8 @@ app.listen(8000);
 ### Streaming File
 
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.21/mod.ts";
-import serveStatic from "https://deno.land/x/nhttp@1.3.21/lib/serve-static.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.22/mod.ts";
+import serveStatic from "https://deno.land/x/nhttp@1.3.22/lib/serve-static.ts";
 import { readAll } from "https://deno.land/std@0.194.0/streams/mod.ts";
 
 const readFile = (path: string) => Deno.open(path).then(readAll);
