@@ -4,11 +4,11 @@ Simple cors libs.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.24/lib/cors.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.25/lib/cors.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.3.24/cors";
+import {...} from "npm:nhttp-land@1.3.25/cors";
 ```
 #### Node / Bun
 ```ts
@@ -19,8 +19,8 @@ import {...} from "nhttp-land/cors";
 
 ### Usage
 ```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.24/mod.ts";
-import cors from "https://deno.land/x/nhttp@1.3.24/lib/cors.ts";
+import nhttp from "https://deno.land/x/nhttp@1.3.25/mod.ts";
+import cors from "https://deno.land/x/nhttp@1.3.25/lib/cors.ts";
 
 const app = nhttp();
 
