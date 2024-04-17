@@ -8,11 +8,11 @@ Make Controller as Router with simple Decorators.
 ### Import
 #### Deno
 ```ts
-import {...} from "https://deno.land/x/nhttp@1.3.25/lib/controller.ts";
+import {...} from "https://deno.land/x/nhttp@1.3.26/lib/controller.ts";
 ```
 #### Deno npm
 ```ts
-import {...} from "npm:nhttp-land@1.3.25/controller";
+import {...} from "npm:nhttp-land@1.3.26/controller";
 ```
 #### deno.json
 ```js
@@ -48,8 +48,8 @@ import {...} from "nhttp-land/controller";
 
 ### Usage
 ```ts
-import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.3.25/mod.ts";
-import { Get, Controller } from "https://deno.land/x/nhttp@1.3.25/lib/controller.ts";
+import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.3.26/mod.ts";
+import { Get, Controller } from "https://deno.land/x/nhttp@1.3.26/lib/controller.ts";
 
 @Controller("/hello")
 class HelloController {
