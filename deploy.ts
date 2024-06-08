@@ -1,5 +1,5 @@
 import nhttp from "jsr:@nhttp/nhttp@2.0.0";
-import serveStatic from "jsr:@nhttp/nhttp@2.0.0";
+import serveStatic from "jsr:@nhttp/nhttp@2.0.0/serve-static";
 
 const app = nhttp();
 
