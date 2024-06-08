@@ -1,42 +1,16 @@
 # Jsx
 
-Simple jsx libs.
-
-### Import
-
-#### Deno
-
-```ts
-import {...} from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
-```
-
-#### Deno npm
-
-```ts
-import {...} from "npm:nhttp-land@1.3.26/jsx";
-```
-
-#### Node / Bun
-
-```ts
-import {...} from "nhttp-land/jsx";
-// or
-// const {...} = require("nhttp-land/jsx");
-```
+jsx libs for NHttp.
 
 ### Usage
 
 ```tsx
-/** @jsx n */
-/** @jsxFrag n.Fragment */
-
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
+import nhttp from "@nhttp/nhttp";
 import {
   type FC,
   Helmet,
-  n,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+} from "@nhttp/nhttp/jsx";
 
 // support for AsyncComponent
 const Fetcher: FC = async () => {
@@ -74,19 +48,16 @@ app.listen(8000, () => {
 });
 ```
 
-### Config Automatic
+### Config
 
 #### Transform to react-jsx
 
 ```json
-// deno.json
+// deno.json / tsconfig.json
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "nhttp-jsx"
-  },
-  "imports": {
-    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.26/lib/jsx/jsx-runtime.ts"
+    "jsxImportSource": "@nhttp/nhttp/jsx"
   }
 }
 ```
@@ -97,14 +68,11 @@ app.listen(8000, () => {
 [fastest jsx transform](https://deno.com/blog/v1.38#fastest-jsx-transform)
 
 ```json
-// deno.json
+// deno.json / tsconfig.json
 {
   "compilerOptions": {
     "jsx": "precompile",
-    "jsxImportSource": "nhttp-jsx"
-  },
-  "imports": {
-    "nhttp-jsx/jsx-runtime": "https://deno.land/x/nhttp@1.3.26/lib/jsx/jsx-runtime.ts"
+    "jsxImportSource": "@nhttp/nhttp/jsx"
   }
 }
 ```
@@ -116,7 +84,7 @@ app.listen(8000, () => {
 use requestEvent.
 
 ```tsx
-import { useRequestEvent } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useRequestEvent } from "@nhttp/nhttp/jsx";
 
 const Home: FC = () => {
   const rev = useRequestEvent();
@@ -130,7 +98,7 @@ const Home: FC = () => {
 use parameter from router. e.g. `/user/:name`.
 
 ```tsx
-import { useParams } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useParams } from "@nhttp/nhttp/jsx";
 
 const User: FC = () => {
   const params = useParams<{ name: string }>();
@@ -144,7 +112,7 @@ const User: FC = () => {
 use query parameter from url. e.g. `/user?name=john`.
 
 ```tsx
-import { useQuery } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useQuery } from "@nhttp/nhttp/jsx";
 
 const User: FC = () => {
   const query = useQuery<{ name: string }>();
@@ -158,7 +126,7 @@ const User: FC = () => {
 use request body.
 
 ```tsx
-import { useBody } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useBody } from "@nhttp/nhttp/jsx";
 
 const User: FC = async () => {
   const user = useBody<{ name: string }>();
@@ -175,7 +143,7 @@ const User: FC = async () => {
 use http_response.
 
 ```tsx
-import { useResponse } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useResponse } from "@nhttp/nhttp/jsx";
 
 const User: FC = () => {
   const res = useResponse();
@@ -191,7 +159,7 @@ const User: FC = () => {
 minimal for simple client interactive.
 
 ```tsx
-import { useScript } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useScript } from "@nhttp/nhttp/jsx";
 
 const Counter: FC = () => {
   const state = { count: 0 };
@@ -226,7 +194,7 @@ const Counter: FC = () => {
 generate unique id.
 
 ```tsx
-import { useId } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useId } from "@nhttp/nhttp/jsx";
 
 const User: FC = () => {
   const title_id = useId();
@@ -246,7 +214,7 @@ const User: FC = () => {
 add style directly to the markup.
 
 ```tsx
-import { useStyle } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import { useStyle } from "@nhttp/nhttp/jsx";
 
 const User: FC = () => {
   useStyle({
@@ -275,7 +243,7 @@ Add context provider.
 import {
   createContext,
   useContext,
-} from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+} from "@nhttp/nhttp/jsx";
 
 const FooContext = createContext();
 
@@ -295,10 +263,8 @@ app.get("/foo", () => {
 ```
 ### With Htmx
 ```tsx
-/** @jsx n */
-/** @jsxFrag n.Fragment */
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
-import { n, htmx, renderToHtml } from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
+import nhttp from "@nhttp/nhttp";
+import { htmx, renderToHtml } from "@nhttp/nhttp/jsx";
 
 const app = nhttp();
 
@@ -320,44 +286,18 @@ app.post("/clicked", () => {
 
 app.listen(8000);
 ```
-### With Twind Server
-
-```jsx
-/** @jsx n */
-/** @jsxFrag n.Fragment */
-
-import {
-  FC,
-  n,
-  renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
-import { useTwindServer } from "https://deno.land/x/nhttp@1.3.26/lib/jsx/twind-server.ts";
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
-
-useTwindServer();
-
-const app = nhttp();
-
-app.engine(renderToHtml);
-
-app.get("/", () => <h1 className="mt-20">hello twind</h1>);
-
-app.listen(8000, () => {
-  console.log("> Running on port 8000");
-});
-```
 
 ### With React
 
 ```jsx
-import React from "https://esm.sh/react";
+import nhttp from "@nhttp/nhttp";
+import React from "npm:react";
 import {
   Helmet,
   options,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
-import { renderToString } from "https://esm.sh/react-dom/server";
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
+} from "@nhttp/nhttp/jsx";
+import { renderToString } from "npm:react-dom/server";
 
 options.onRenderElement = (elem) => {
   return renderToString(elem);
@@ -386,17 +326,15 @@ app.listen(8000, () => {
 ### With Preact
 
 ```jsx
-/** @jsx h */
-/** @jsxFrag Fragment */
-
-import { Fragment, h } from "https://esm.sh/preact";
+import nhttp from "@nhttp/nhttp";
+import { Fragment } from "npm:preact";
 import {
   Helmet,
   options,
   renderToHtml,
-} from "https://deno.land/x/nhttp@1.3.26/lib/jsx.ts";
-import { renderToString } from "https://esm.sh/preact-render-to-string";
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
+} from "@nhttp/nhttp/jsx";
+import { renderToString } from "npm:preact-render-to-string";
+
 
 options.onRenderElement = (elem) => {
   return renderToString(elem);

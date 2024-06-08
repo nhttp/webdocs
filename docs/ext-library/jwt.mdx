@@ -1,0 +1,108 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# JWT
+Simple jwt libs for NHttp.
+
+### Install
+
+install external libs `@nhttp/jwt`.
+
+<Tabs>
+<TabItem value="deno_jsr" label="Deno">
+
+```bash
+deno add @nhttp/jwt
+```
+
+</TabItem>
+<TabItem value="deno" label="deno.land">
+
+```ts
+import {...} from "https://deno.land/x/nhttp/lib/jwt.ts";
+```
+
+</TabItem>
+<TabItem value="npm" label="npm">
+
+```bash
+npx jsr add @nhttp/jwt
+```
+
+</TabItem>
+<TabItem value="bun" label="Bun">
+
+```bash
+bunx jsr add @nhttp/jwt
+```
+
+</TabItem>
+<TabItem value="yarn" label="Yarn">
+
+```bash
+yarn dlx jsr add @nhttp/jwt
+```
+
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```bash
+pnpm dlx jsr add @nhttp/jwt
+```
+
+</TabItem>
+</Tabs>
+
+### Example
+```ts
+import nhttp from "@nhttp/nhttp";
+import jwt from "@nhttp/jwt";
+
+// key secret
+const JWT_SECRET = "myjwtsecret";
+
+const guard = () => {
+  return jwt({ 
+    secret: JWT_SECRET,
+    onAuth: (rev, next) => {...}
+  });
+}
+
+const app = nhttp();
+
+app.post("/login", (rev) => {
+  // example payload.
+  const payload = {
+    iat: Math.round(Date.now() / 1000),
+    // expires 1 hours
+    exp: Math.round(Date.now() / 1000 + (1 * 60 * 60)),
+    user: rev.body.username,
+  };
+  return { token: jwt.encode(payload, JWT_SECRET) };
+});
+
+app.get("/admin/home", guard(), (rev) => {
+  return `Welcome ${rev.auth.user}`;
+});
+
+app.listen(8000, (_err, info) => {
+  console.log(`Running on port ${info.port}`);
+});
+```
+
+### With Routing Controller
+```js
+import { Jwt } from "@nhttp/jwt";
+
+@Controller("/admin")
+class AdminController {
+  ...
+  @Jwt({ secret: "secret" })
+  @Get("/home")
+  home(rev: RequestEvent) {
+    console.log("Payload =>", rev.auth);
+    return "Welcome Home";
+  }
+  ...
+}
+```

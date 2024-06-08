@@ -1,34 +1,12 @@
 # CSRF
 
-Cross Site Request Forgery (CSRF) libs.
-
-### Import
-
-#### Deno
-
-```ts
-import {...} from "https://deno.land/x/nhttp@1.3.26/lib/csrf.ts";
-```
-
-#### Deno npm
-
-```ts
-import {...} from "npm:nhttp-land@1.3.26/csrf";
-```
-
-#### Node / Bun
-
-```ts
-import {...} from "nhttp-land/csrf";
-// or
-// const {...} = require("nhttp-land/csrf");
-```
+Cross Site Request Forgery (CSRF) for NHttp.
 
 ### Usage
 
-```ts
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
-import csrf from "https://deno.land/x/nhttp@1.3.26/lib/csrf.ts";
+```tsx
+import nhttp from "@nhttp/nhttp";
+import csrf from "@nhttp/nhttp/csrf";
 
 const MyForm: FC<{ csrf: string }> = (props) => {
   return (

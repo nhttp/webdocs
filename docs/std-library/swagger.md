@@ -2,31 +2,18 @@
 
 Make api-docs using Swagger with simple Decorators.
 
-### Import
-
-#### Deno
-
-```ts
-import {...} from "https://deno.land/x/nhttp@1.3.26/lib/swagger.ts";
+### Config
+```json
+{
+  "compilerOptions":{
+    "experimentalDecorators": true,
+  }
+}
 ```
-#### Deno npm
-```ts
-import {...} from "npm:nhttp-land@1.3.26/swagger";
-```
-
-#### Node / Bun
-
-```ts
-import {...} from "nhttp-land/swagger";
-// or
-// const {...} = require("nhttp-land/swagger");
-```
-
-#### tsconfig (bun/node)
-```js
+#### tsconfig.json
+```json
 {
   "compilerOptions": {
-    "types": ["bun-types"],
     "moduleResolution": "nodenext",
     "experimentalDecorators": true,
     "target": "ES5",
@@ -42,18 +29,18 @@ import {...} from "nhttp-land/swagger";
 ### Usage
 
 ```ts
-import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.3.26/mod.ts";
+import { nhttp, RequestEvent } from "@nhttp/nhttp";
 import {
   Controller,
   Get,
-} from "https://deno.land/x/nhttp@1.3.26/lib/controller.ts";
+} from "@nhttp/nhttp/controller";
 import { 
   ApiDocument,
   ApiOperation,
   ApiResponse,
   DocumentBuilder,
   swagger, 
-} from "https://deno.land/x/nhttp@1.3.26/lib/swagger.ts";
+} from "@nhttp/nhttp/swagger";
 
 @ApiDocument({
   name: "Doc user 1.0",

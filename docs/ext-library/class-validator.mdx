@@ -1,47 +1,61 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Class Validator
 
-Simple validator Inspired by [class-validator](https://github.com/typestack/class-validator).
+Validate body, Based on [class-validator](https://github.com/typestack/class-validator).
 
 > for complete doc, please visit
 > [class-validator](https://github.com/typestack/class-validator).
 
-### Import
+### Install
 
-#### Deno
+install external libs `@nhttp/class-validator`.
 
-```ts
-import {...} from "https://deno.land/x/nhttp@1.3.26/lib/class-validator.ts";
-```
-#### Deno npm
-```ts
-import {...} from "npm:nhttp-land@1.3.26/class-validator";
-```
+<Tabs>
+<TabItem value="deno_jsr" label="Deno">
 
-#### Node / Bun
 ```bash
-npm i class-validator
+deno add @nhttp/class-validator
 ```
+
+</TabItem>
+<TabItem value="deno" label="deno.land">
+
 ```ts
-import {...} from "nhttp-land/class-validator";
-// or
-// const {...} = require("nhttp-land/class-validator");
+import {...} from "https://deno.land/x/nhttp/lib/class-validator.ts";
 ```
-#### tsconfig (bun/node)
-```js
-{
-  "compilerOptions": {
-    "types": ["bun-types"],
-    "moduleResolution": "nodenext",
-    "experimentalDecorators": true,
-    "target": "ES5",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ]
-  },
-}
+
+</TabItem>
+<TabItem value="npm" label="npm">
+
+```bash
+npx jsr add @nhttp/class-validator
 ```
+
+</TabItem>
+<TabItem value="bun" label="Bun">
+
+```bash
+bunx jsr add @nhttp/class-validator
+```
+
+</TabItem>
+<TabItem value="yarn" label="Yarn">
+
+```bash
+yarn dlx jsr add @nhttp/class-validator
+```
+
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```bash
+pnpm dlx jsr add @nhttp/class-validator
+```
+
+</TabItem>
+</Tabs>
 
 ### Usage
 
@@ -49,13 +63,13 @@ import {...} from "nhttp-land/class-validator";
 import {
   Controller,
   Post,
-} from "https://deno.land/x/nhttp@1.3.26/lib/controller.ts";
+} from "@nhttp/nhttp/controller";
 import {
   IsEmail,
   IsPhoneNumber,
   IsString,
   Validate,
-} from "https://deno.land/x/nhttp@1.3.26/lib/class-validator.ts";
+} from "@nhttp/class-validator";
 
 // Person Dto
 class PersonDto {
@@ -84,7 +98,7 @@ class PersonController {
 
 ### Example Error Message
 If not valid, will throw to status 422 (Unprocessable Entity).
-```ts
+```json
 {
   "status": 422,
   "message": [

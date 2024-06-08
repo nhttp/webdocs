@@ -2,48 +2,50 @@
 sidebar_position: 8
 ---
 
-# Other Runtime
-Support Bun, Node, CF-Workers, etc.
+# Runtime
+NHttp Support Deno, Bun, Node, CF-Workers, etc.
 
 > For Nodejs, requires v18.0.0 or higher.
 
-### Install
-
-```bash
-npm i nhttp-land
-
-// or
-
-yarn add nhttp-land
-```
-
+### Deno/Bun/Node
 ```ts
-import nhttp from "nhttp-land";
-```
-
-### Usage (Bun / Node)
-
-```ts
-import nhttp from "nhttp-land";
+import nhttp from "@nhttp/nhttp";
 
 const app = nhttp();
 
-app.get("/", () => "hello, world");
-
-app.listen(8000, () => {
-  console.log("> Running on port 8000");
+app.get("/", () => {
+  return "Hello, World";
 });
 
-// if cfw or other runtime, just invoke app.handle
-// export default { fetch: app.handle };
+app.get("/cat", () => {
+  return { name: "cat" };
+});
+
+app.listen(8000);
 ```
 
-### tsconfig
+### cloudflare-workers or other runtime
+```ts
+import nhttp from "@nhttp/nhttp";
 
+const app = nhttp();
+
+app.get("/", () => {
+  return "Hello, World";
+});
+
+app.get("/cat", () => {
+  return { name: "cat" };
+});
+
+export default app.module();
+```
+
+### For typescript user
+tsconfig.json
 ```json
 {
   "compilerOptions": {
-    "types": ["bun-types"],
     "moduleResolution": "nodenext",
     "target": "ES5",
     "lib": [

@@ -3,68 +3,35 @@ sidebar_position: 6
 ---
 
 # Cloudflare Workers
-
-## Usage With Wrangler
-
-### Install Wrangler
-
+### create new project using npm
 ```bash
-npm install @cloudflare/wrangler -g
-```
+npm create cloudflare@latest my-app
 
-### Generate App and cd app_name
+cd my-app
 
-```bash
-wrangler generate app_name
-cd app_name
-```
-
-### Install nhttp-land
-
-```bash
-npm install nhttp-land --save
-```
-
-### Webpack
-
-Modify wrangler.toml
-
-```toml
-name = "app_name"
-type = "webpack"
-
-account_id = "your_account_id"
-workers_dev = true
-route = ""
-zone_id = ""
+npx jsr add @nhttp/nhttp 
 ```
 
 ### Code
-
-Modify index.js
-
-```js
-import nhttp from "nhttp-land";
+```ts
+import nhttp from "@nhttp/nhttp";
 
 const app = nhttp();
 
 app.get("/", () => {
-  return "hello, world";
+  return "Hello, World";
 });
 
-// fetch
-addEventListener("fetch", (event) => {
-  event.respondWith(app.handleEvent(event));
+app.get("/cat", () => {
+  return { name: "cat" };
 });
 
-// module workers
-// export default { fetch: app.handle };
+export default app.module();
 ```
-
-### Run Development
+### Run Dev
 
 ```bash
-wrangler dev
+npm run dev
 ```
 
 More info https://developers.cloudflare.com/workers/

@@ -58,7 +58,7 @@ this router is elegant.
 ```jsx
 // routes/index.tsx
 
-import { type RequestEvent } from "nhttp";
+import { type RequestEvent } from "@nhttp/nhttp";
 
 export default function home(rev: RequestEvent) {
   return (...)
@@ -68,7 +68,7 @@ Using Middleware
 ```jsx
 // routes/index.tsx
 
-import { type RequestEvent } from "nhttp";
+import { type RequestEvent } from "@nhttp/nhttp";
 
 function home(rev: RequestEvent) {
   return (...)
@@ -81,7 +81,7 @@ Using Api and custom methods.
 ```jsx
 // routes/api/user.ts
 
-import { type RequestEvent } from "nhttp";
+import { type RequestEvent } from "@nhttp/nhttp";
 
 function all(rev: RequestEvent) {...}
 function createUser(rev: RequestEvent) {...}
@@ -97,7 +97,7 @@ export default {
 ```jsx
 // components/counter.tsx
 
-import { withHydrate } from "hydrate";
+import { withHydrate } from "@nhttp/hydrate";
 
 const Counter = () => {...}
 

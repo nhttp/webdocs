@@ -14,15 +14,19 @@ app.get("/hello", () => {
 
 ### Example 2
 ```ts
-app.get("/hello", (rev, next) => {
+type Hello = {
+  my_value: string;
+}
+
+app.get<Hello>("/hello", (rev, next) => {
   rev.my_value = "foo";
   return next();
 });
-app.get("/hello", (rev, next) => {
+app.get<Hello>("/hello", (rev, next) => {
   rev.my_value += "bar";
   return next();
 });
-app.get("/hello", (rev) => {
+app.get<Hello>("/hello", (rev) => {
   return rev.my_value;
   // => foobar
 });

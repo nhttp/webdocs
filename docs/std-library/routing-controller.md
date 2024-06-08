@@ -5,34 +5,18 @@ sidebar_position: 1
 # Routing Controller
 Make Controller as Router with simple Decorators.
 
-### Import
-#### Deno
-```ts
-import {...} from "https://deno.land/x/nhttp@1.3.26/lib/controller.ts";
-```
-#### Deno npm
-```ts
-import {...} from "npm:nhttp-land@1.3.26/controller";
-```
-#### deno.json
-```js
+### Config
+```json
 {
   "compilerOptions":{
     "experimentalDecorators": true,
   }
 }
 ```
-#### Node / Bun
-```ts
-import {...} from "nhttp-land/controller";
-// or
-// const {...} = require("nhttp-land/controller");
-```
-#### tsconfig (bun/node)
-```js
+#### tsconfig.json
+```json
 {
   "compilerOptions": {
-    "types": ["bun-types"],
     "moduleResolution": "nodenext",
     "experimentalDecorators": true,
     "target": "ES5",
@@ -45,11 +29,10 @@ import {...} from "nhttp-land/controller";
 }
 ```
 
-
 ### Usage
 ```ts
-import { nhttp, RequestEvent } from "https://deno.land/x/nhttp@1.3.26/mod.ts";
-import { Get, Controller } from "https://deno.land/x/nhttp@1.3.26/lib/controller.ts";
+import { nhttp, RequestEvent } from "@nhttp/nhttp";
+import { Get, Controller } from "@nhttp/nhttp/controller";
 
 @Controller("/hello")
 class HelloController {
@@ -248,18 +231,11 @@ class HelloController {
 }
 ```
 #### app.engine
-```ts
-// @deno-types="npm:@types/react"
+
+```tsx
 import React from "npm:react";
-// @deno-types="npm:@types/react-dom/server"
 import { renderToString } from "npm:react-dom/server";
 
-app.engine(renderToString);
-// or stream
-// app.engine(renderToReadableStream);
-```
-Or with complex html.
-```ts
 app.engine((elem, params) => {
   return `
     <!DOCTYPE html>

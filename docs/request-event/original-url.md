@@ -2,8 +2,6 @@
 
 Lookup originalUrl.
 
-> note: originalUrl cannot be modify.
-
 ```js
 // example: /user?name=john
 app.get("/user", (rev) => {

@@ -1,29 +1,62 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # tRPC
 Simple adapter tRPC for nhttp.
 
-### Import
-#### Deno
-```ts
-import {...} from "https://deno.land/x/nhttp@1.3.26/lib/trpc.ts";
-```
-#### Deno npm
-```ts
-import {...} from "npm:nhttp-land@1.3.26/trpc";
-```
-#### Node / Bun
+### Install
+
+install external libs `@nhttp/trpc`.
+
+<Tabs>
+<TabItem value="deno_jsr" label="Deno">
+
 ```bash
-npm i @trpc/server
+deno add @nhttp/trpc
 ```
+
+</TabItem>
+<TabItem value="deno" label="deno.land">
+
 ```ts
-import {...} from "nhttp-land/trpc";
-// or
-// const {...} = require("nhttp-land/trpc");
+import {...} from "https://deno.land/x/nhttp/lib/trpc.ts";
 ```
+
+</TabItem>
+<TabItem value="npm" label="npm">
+
+```bash
+npx jsr add @nhttp/trpc
+```
+
+</TabItem>
+<TabItem value="bun" label="Bun">
+
+```bash
+bunx jsr add @nhttp/trpc
+```
+
+</TabItem>
+<TabItem value="yarn" label="Yarn">
+
+```bash
+yarn dlx jsr add @nhttp/trpc
+```
+
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```bash
+pnpm dlx jsr add @nhttp/trpc
+```
+
+</TabItem>
+</Tabs>
 
 ### Usage
 ```ts
-import nhttp, { RequestEvent } from "https://deno.land/x/nhttp@1.3.26/mod.ts";
-import adapter from "https://deno.land/x/nhttp@1.3.26/lib/trpc.ts";
+import nhttp, { RequestEvent } from "@nhttp/nhttp";
+import adapter from "@nhttp/trpc";
 import { initTRPC } from "npm:@trpc/server";
 
 // tRPC router

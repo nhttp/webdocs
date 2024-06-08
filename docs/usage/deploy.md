@@ -7,12 +7,12 @@ sidebar_position: 2
 First create file `my_app.ts` and copy in the code from the example above.
 
 ```js
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
+import nhttp from "@nhttp/nhttp";
 
 const app = nhttp();
 
 app.get("/", () => {
-  return "Hello, Deploy";
+  return "Hello, Deno Deploy";
 });
 
 app.listen(8080);

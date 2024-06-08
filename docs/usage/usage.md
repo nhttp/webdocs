@@ -4,12 +4,12 @@ sidebar_position: 1
 
 # Usage
 
-First create file `app.ts` and copy in the code from the example above.
+### Simple Usage
 
-```js
-import nhttp from "https://deno.land/x/nhttp@1.3.26/mod.ts";
-// or from npm
-// import nhttp from "npm:nhttp-land@1.3.26";
+Create file `app.ts` and copy-paste this code.
+
+```ts
+import nhttp from "@nhttp/nhttp";
 
 const app = nhttp();
 
@@ -21,13 +21,53 @@ app.get("/cat", () => {
   return { name: "cat" };
 });
 
-app.listen(8000, () => {
-  console.log("> Running on port 8000");
-});
+app.listen(8000);
 ```
 
 ### Run
 
 ```bash
 deno run -A app.ts
+```
+
+## Using JSX + Htmx
+
+Create file `app.tsx` and copy-paste this code.
+
+```jsx
+import nhttp from "@nhttp/nhttp";
+import { htmx, renderToHtml } from "@nhttp/nhttp/jsx";
+
+const app = nhttp();
+
+app.engine(renderToHtml);
+
+app.use(htmx());
+
+app.get("/", () => {
+  return (
+    <button hx-post="/clicked" hx-swap="outerHTML">
+      Click Me
+    </button>
+  );
+});
+
+app.post("/clicked", () => {
+  return <span>It's Me</span>;
+});
+
+app.listen(8000);
+```
+
+## config jsx
+
+deno.json / tsconfig.json
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@nhttp/nhttp/jsx"
+  }
+}
 ```
