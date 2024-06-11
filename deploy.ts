@@ -1,18 +1,10 @@
-import nhttp from "jsr:@nhttp/nhttp@2.0.0";
-import serveStatic from "jsr:@nhttp/nhttp@2.0.0/serve-static";
+import nhttp from "jsr:@nhttp/nhttp@2.0.1";
+import serveStatic from "jsr:@nhttp/nhttp@2.0.1/serve-static";
 
 const app = nhttp();
 
 app.use(serveStatic("build", {
-  setHeaders({ response }, path) {
-    if (!path.endsWith(".html")) {
-      response.setHeader(
-        "cache-control",
-        "public, max-age=604800, immutable",
-      );
-    }
-    response.setHeader("x-powered-by", "nhttp");
-  },
+  cache: true,
   spa: true,
 }));
 
